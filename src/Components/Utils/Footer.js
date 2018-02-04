@@ -7,17 +7,17 @@ import React  from 'react';
          </ul>
          <div className="navbar-collapse collapse" id="footer">
              <div className="navbar-text">
-                 &copy; 2017. <a className="navbar-link">Webkit Template </a> by <a className="navbar-link" target="_blank">Smart-dev Soft</a>
+                 &copy; 2018. <a className="navbar-link">Toudeal Group Corporation </a> by <a className="navbar-link" target="_blank">Site web</a>
              </div>
              <div className="navbar-right">
                  <ul className="nav navbar-nav">
-                     <li><a>About</a></li>
-                     <li><a>Terms</a></li>
-                     <li><a>Contact</a></li>
+                     <li><a>Le Groupe</a></li>
+                     <li><a>{`Politique d'utilisation`}</a></li>
+                     <li><a>Nous contactez</a></li>
                  </ul>
              </div>
          </div>
      </div>
  );
-
+ 
 export default Footer;

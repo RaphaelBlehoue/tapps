@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import $ from 'jquery/dist/jquery.min';
-import SecurityLayout from '../../Components/Layouts/SecurityLayout';
-import SignInFormContainer from '../../Containers/Security/SignInFormContainer';
+import SecurityLayout from '../../Layouts/SecurityLayout';
+import SignInFormContainer from '../../../Containers/Security/SignInFormContainer';
 
 class SignInPage extends Component {
 

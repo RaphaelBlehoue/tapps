@@ -3389,8 +3389,8 @@ li + .dropdown-header.highlight,
   padding-bottom: 88px;
 }
 .navbar-brand > img {
-  margin-top: 2px;
-  height: 16px;
+  margin-top: -5px;
+  height: 32px;
 }
 .navbar-nav {
   margin: 0;

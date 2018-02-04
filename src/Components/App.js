@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FrontRoute from '../Routes/FrontRoute';
 import SecurityRoute from '../Routes/SecurityRoute';
-import DashboardPage from '../Pages/Dashboard/DashboardPage';
-import ProfilePage from '../Pages/Dashboard/ProfilePage';
-import SignInPage from '../Pages/Security/SignInPage';
+import DashboardPage from './Pages/Dashboard/DashboardPage';
+import ProfilePage from './Pages/Dashboard/ProfilePage';
+import SignInPage from './Pages/Security/SignInPage';
 
 
 const App = ({ location }) => (

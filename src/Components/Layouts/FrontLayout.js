@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTyes from 'prop-types';
 
-import Navbar from '../../Ui/Navbar';
-import Footer from '../../Ui/Footer';
+import Navbar from '../Utils/Navbar';
+import Footer from '../Utils/Footer';
 
 const FrontLayout = (props) => (
     <div>
