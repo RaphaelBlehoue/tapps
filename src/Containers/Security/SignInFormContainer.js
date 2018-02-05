@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Field , reduxForm } from 'redux-form';
-import renderField from '../../Components/Utils/renderField';
+import renderField from '../../Components/WidgetComponents/renderField';
 import { SignInUser } from "../../Actions/UserActions";
 
 // Client-side validation informations

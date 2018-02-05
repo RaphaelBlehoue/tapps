@@ -1,15 +1,15 @@
 import React from 'react';
-import MessageNotification from './MessageNotification';
-import SessionSetting from './SessionSetting';
+import MessageNotification from '../WidgetComponents/MessageNotification';
+import SessionSetting from '../WidgetComponents/SessionSetting';
 import logo from "../../logo-toudeal-svg.svg";
-import NavbarBottom from './NavbarBottom';
-
+import NavbarBottom from '../WidgetComponents/NavbarBottom';
 
 
 const styleDivs = {
     position: 'relative', 
     zIndex: 30
 }
+
 
 
 const Navbar = () => (
@@ -32,31 +32,6 @@ const Navbar = () => (
 					<form className="navbar-form navbar-left col-md-10">
 						<div className="form-group">
 							<div className="input-group">
-								<div className="input-group-btn">
-									<button
-										type="button"
-										className="btn btn-primary btn-xlg dropdown-toggle btn-icon"
-										data-toggle="dropdown"
-									>
-										<span>
-											Liste <i className="caret" />
-										</span>
-									</button>
-									<ul className="dropdown-menu">
-										<li>
-											<a>Action</a>
-										</li>
-										<li>
-											<a>Another action</a>
-										</li>
-										<li>
-											<a>Something else here</a>
-										</li>
-										<li>
-											<a>One more line</a>
-										</li>
-									</ul>
-								</div>
 								<div>
 									<input
 										type="text"
@@ -80,7 +55,7 @@ const Navbar = () => (
 					</ul>
 				</div>
 			</div>
-            <NavbarBottom/> 
+			<NavbarBottom />
 		</div>
 	</div>
 );
