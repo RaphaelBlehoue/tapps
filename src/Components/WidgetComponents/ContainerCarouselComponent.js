@@ -7,8 +7,8 @@ const settings = {
 	dots: true,
 	infinite: true,
 	speed: 1500,
-	slidesToShow: 3,
-	slidesToScroll: 3,
+	slidesToShow: 2,
+	slidesToScroll: 2,
 	initialSlide: 0,
 	autoplay: true,
 	autoplaySpeed: 5000,
@@ -18,8 +18,8 @@ const settings = {
 		{
 			breakpoint: 1024,
 			settings: {
-				slidesToShow: 3,
-				slidesToScroll: 3,
+				slidesToShow: 2,
+				slidesToScroll: 2	,
 				infinite: true,
 				dots: true,
 				autoplay: true,
@@ -52,32 +52,40 @@ const settings = {
 };
 
 const ContainerCarouselComponent = () => (
-	<Slider {...settings}>
-		<div>
-			<img src="http://placekitten.com/g/211/109" alt="" width="auto"/>
-		</div>
-		<div>
-			<img src="http://placekitten.com/g/211/109" alt="" width="auto"/>
-		</div>
-		<div>
-			<img src="http://placekitten.com/g/211/109" alt="" width="auto"/>
-		</div>
-		<div>
-			<img src="http://placekitten.com/g/211/109" alt="" width="auto"/>
-		</div>
-		<div>
-			<img src="http://placekitten.com/g/211/109" alt="" width="auto"/>
-		</div>
-		<div>
-			<img src="http://placekitten.com/g/211/109" alt="" width="auto"/>
-		</div>
-		<div>
-			<img src="http://placekitten.com/g/211/109" alt="" width="auto"/>
-		</div>
-		<div>
-			<img src="http://placekitten.com/g/211/109" alt="" width="auto"/>
-		</div>
-	</Slider>
+        <div className="row">
+            <div className="col-md-12">	
+				<div className="panel panel-flat">
+					<div className="panel-body">
+						<Slider {...settings}>
+							<div>
+								<img src="http://placekitten.com/g/300/150" alt="" />
+							</div>
+							<div>
+								<img src="http://placekitten.com/g/300/150" alt="" />
+							</div>
+							<div>
+								<img src="http://placekitten.com/g/300/150" alt="" />
+							</div>
+							<div>
+								<img src="http://placekitten.com/g/300/150" alt="" />
+							</div>
+							<div>
+								<img src="http://placekitten.com/g/300/150" alt="" />
+							</div>
+							<div>
+								<img src="http://placekitten.com/g/300/150" alt="" />
+							</div>
+							<div>
+								<img src="http://placekitten.com/g/300/150" alt="" />
+							</div>
+							<div>
+								<img src="http://placekitten.com/g/300/150" alt="" />
+							</div>
+						</Slider>
+					</div>
+				</div>
+			</div>
+		</div>		
 );
 
 export default ContainerCarouselComponent;

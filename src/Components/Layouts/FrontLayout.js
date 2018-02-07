@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTyes from 'prop-types';
-
+import PropTypes from 'prop-types';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import ContainerSlideSwipeableComponent from '../WidgetComponents/ContainerSlideSwipeableComponent';
@@ -18,9 +17,9 @@ const FrontLayout = props => (
 );
 
 FrontLayout.propTypes = {
-    children: PropTyes.oneOfType([
-        PropTyes.arrayOf(PropTyes.node),
-        PropTyes.node
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
     ]).isRequired
 };
 

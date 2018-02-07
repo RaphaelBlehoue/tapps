@@ -159,10 +159,10 @@ a.badge,
   }
 }
 .sidebar-main {
-  z-index: 99;
+  z-index: -99;
 }
 .sidebar-secondary {
-  z-index: 98;
+  z-index: -98;
 }
 .sidebar-opposite {
   display: none;

@@ -1,5 +1,7 @@
 import React from 'react';
 import ContainerCarouselComponent from '../WidgetComponents/ContainerCarouselComponent'
+import ContainerProductFil from '../WidgetComponents/ContainerProductFil';
+
 
 const ContainerBodyFil = () => (
 	<div className="content-wrapper">
@@ -96,6 +98,12 @@ const ContainerBodyFil = () => (
 			</div>
 		</div>
 		<ContainerCarouselComponent />
+		<ContainerProductFil />
+		<ContainerProductFil />
+		<ContainerProductFil />
+		<ContainerProductFil />
+		<ContainerProductFil />
+		<ContainerProductFil />
 	</div>
 );
 
