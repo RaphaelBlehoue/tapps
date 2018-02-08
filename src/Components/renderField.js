@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 
 const renderField = ({ input, label, type, classType, meta: { touched, error, invalid, warning}}) => (
-    <div className={`form-group has-feedback has-feedback-left ${touched && invalid ?'has-error':''}`}>
+    <div className={`form-group form-group-xlg has-feedback has-feedback-left ${touched && invalid ?'has-error':''}`}>
         <label htmlFor={label} className="control-label"/>
         <input type={type} placeholder={label} {...input } className="form-control"/>
         <div className="form-control-feedback">
@@ -17,6 +17,7 @@ renderField.propTypes = {
     label: PropTypes.string.isRequired,
     classType: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
+    ...PropTypes,
 };
 
 renderField.defaultProps = {
