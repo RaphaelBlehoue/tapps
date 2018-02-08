@@ -1,21 +1,30 @@
 import React from 'react';
 
-const ContainerSideBarComponentSecond = () => (
+const SecondSideBarComponent = () => (
 	<div className="sidebar sidebar-secondary sidebar-default">
 		<div className="sidebar-content">
 			<div className="sidebar-category">
-				<div className="category-title">
-					<span>Search task</span>
-				</div>
-				<div className="category-content">
-					<form>
-						<div className="has-feedback has-feedback-left">
-							<input type="search" className="form-control" placeholder="Type and hit Enter" />
-							<div className="form-control-feedback">
-								<i className="icon-search4 text-size-base text-muted" />
+				<div className="category-content sidebar-user">
+					<div className="media">
+						<a className="media-left">
+							<img src="assets/images/placeholder.jpg" className="img-circle img-sm" alt="" />
+						</a>
+						<div className="media-body">
+							<span className="media-heading text-semibold">Victoria Baker</span>
+							<div className="text-size-mini text-muted">
+								<i className="icon-pin text-size-small" /> &nbsp;Santa Ana, CA
 							</div>
 						</div>
-					</form>
+						<div className="media-right media-middle">
+							<ul className="icons-list">
+								<li>
+									<a>
+										<i className="icon-cog3" />
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div className="sidebar-category">
@@ -48,4 +57,4 @@ const ContainerSideBarComponentSecond = () => (
 	</div>
 );
 
-export default ContainerSideBarComponentSecond;
+export default SecondSideBarComponent;

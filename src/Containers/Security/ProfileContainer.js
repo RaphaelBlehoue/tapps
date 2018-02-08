@@ -1,12 +1,12 @@
 import React from 'react';
 import FrontLayout from '../../Layouts/FrontLayout';
 
-const ProfilePage = () => (
+const ProfileContainer = () => (
     <FrontLayout>
         <h2>Profile Page</h2>
     </FrontLayout>
 );
 
 
-export default ProfilePage;
+export default ProfileContainer;
 

@@ -1,22 +1,22 @@
 import React from 'react';
-import MessageNotification from '../WidgetComponents/MessageNotification';
-import SessionSetting from '../WidgetComponents/SessionSetting';
+import MessageNotification from '../MessageNotification';
+import SessionSetting from '../SessionSetting';
 import logo from "../../logo-toudeal-svg.svg";
-import NavbarBottom from '../WidgetComponents/NavbarBottom';
+import NavbarBottom from './NavbarBottom';
 import Headroom from "../../../node_modules/react-headroom/dist/index";
 
 
 const styleDivs = {
     position: 'relative', 
     zIndex: 100
-}
+};
 
 const animationTransition = {
   webkitTransition: 'all .5s ease-in-out',
   mozTransition: 'all .5s ease-in-out',
   oTransition: 'all .5s ease-in-out',
   transition: 'all .5s ease-in-out',
-}
+};
 
 
 const Navbar = () => (

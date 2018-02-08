@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ContainerSideBarComponent = () => (
+const SideBarComponent = () => (
 	<div className="sidebar sidebar-main sidebar-default">
 		<div className="sidebar-content">
 			<div className="sidebar-category sidebar-category-visible">
@@ -52,4 +52,4 @@ const ContainerSideBarComponent = () => (
 
 
 
-export default ContainerSideBarComponent;
+export default SideBarComponent;

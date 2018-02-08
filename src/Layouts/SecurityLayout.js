@@ -1,6 +1,5 @@
-/* eslint-disable */
 import React from 'react';
-import PropTyes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const SecurityLayout = (props) => (
     <div>
@@ -15,9 +14,9 @@ const SecurityLayout = (props) => (
 );
 
 SecurityLayout.propTypes = {
-    children: PropTyes.oneOfType([
-        PropTyes.arrayOf(PropTyes.node),
-        PropTyes.node
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
     ]).isRequired
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProductTopStore = () => (
+const FeedProductListTopComponent = () => (
 	<div className="clearfix">
 		<div className="col-sm-4">
 			<div className="thumbnail">
@@ -98,6 +98,6 @@ const ProductTopStore = () => (
 				</div>
 			</div>
 		</div>
-	</div>	
+	</div>
 );
-export default ProductTopStore;
+export default FeedProductListTopComponent;

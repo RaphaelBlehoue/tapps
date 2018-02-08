@@ -1,7 +1,7 @@
 import React from 'react';
-import ProductTopStore from './ProductTopStore';
+import FeedProductListTopComponent from './FeedProductListTopComponent';
 
-const ProductListFil = () => (
+const FeedProductListComponent = () => (
 	<div className="content-group-lg">
 		<div className="col-sm-8">
 			<div className="thumbnail">
@@ -20,10 +20,10 @@ const ProductListFil = () => (
 					</a>
 				</div>
 			</div>
-        </div>
-        <div className="clearfix"/>
-        <ProductTopStore/>
+		</div>
+		<div className="clearfix" />
+		<FeedProductListTopComponent />
 	</div>
 );
 
-export default ProductListFil;
+export default FeedProductListComponent;

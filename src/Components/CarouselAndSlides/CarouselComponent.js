@@ -51,7 +51,7 @@ const settings = {
 	],
 };
 
-const ContainerCarouselComponent = () => (
+const CarouselComponent = () => (
         <div className="row">
             <div className="col-md-12">	
 				<div className="panel panel-flat">
@@ -88,4 +88,4 @@ const ContainerCarouselComponent = () => (
 		</div>		
 );
 
-export default ContainerCarouselComponent;
+export default CarouselComponent;

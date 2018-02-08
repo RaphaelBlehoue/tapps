@@ -1,9 +1,9 @@
 import React from 'react';
-import ContainerCarouselComponent from '../WidgetComponents/ContainerCarouselComponent'
-import ContainerProductFil from '../WidgetComponents/ContainerProductFil';
+import CarouselComponent from '../CarouselAndSlides/CarouselComponent'
+import FeedProductComponent from './FeedProductComponent';
 
 
-const ContainerBodyFil = () => (
+const FeedBodyComponent = () => (
 	<div className="content-wrapper">
 		<div className="navbar navbar-default navbar-xs navbar-component">
 			<ul className="nav navbar-nav no-border visible-xs-block">
@@ -97,14 +97,14 @@ const ContainerBodyFil = () => (
 				</ul>
 			</div>
 		</div>
-		<ContainerCarouselComponent />
-		<ContainerProductFil />
-		<ContainerProductFil />
-		<ContainerProductFil />
-		<ContainerProductFil />
-		<ContainerProductFil />
-		<ContainerProductFil />
+		<CarouselComponent />
+		<FeedProductComponent />
+		<FeedProductComponent />
+		<FeedProductComponent />
+		<FeedProductComponent />
+		<FeedProductComponent />
+		<FeedProductComponent />
 	</div>
 );
 
-export default ContainerBodyFil;
+export default FeedBodyComponent;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
-import Pagination from './modules/components/Pagination';
+import Pagination from '../modules/Pagination';
 
 
 
@@ -27,17 +27,17 @@ const styles = {
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 
-class ContainerSlideSwipeableComponent  extends Component {
+class SlideSwipeableComponent  extends Component {
 
     state = {
         index: 0
-    }
+    };
 
     handleChangeIndex = index => {
         this.setState({
             index    
         });
-    }
+    };
 
     render () {
         const { index } = this.state;
@@ -55,4 +55,4 @@ class ContainerSlideSwipeableComponent  extends Component {
     }
 }
 
-export default ContainerSlideSwipeableComponent;
+export default SlideSwipeableComponent;
