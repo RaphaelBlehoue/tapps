@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 
-const renderField = ({ input, label, type, classType, meta: { touched, error, invalid, warning}}) => (
-    <div className={`form-group has-feedback has-feedback-left ${touched && invalid ?'has-error':''}`}>
-        <label htmlFor={label} className="control-label"/>
-        <input type={type} placeholder={label} {...input } className="form-control"/>
+const renderField = ({ input, label="", type="", placeholder="", classType, meta: { touched, error, invalid, warning}}) => (
+    <div className={`form-group form-group-xlg has-feedback has-feedback-left ${touched && invalid ?'has-error':''}`}>
+        <label htmlFor={label} className="control-label">{label}</label>
+        <input type={type} placeholder={placeholder} {...input } className="form-control"/>
         <div className="form-control-feedback">
             <i className={classType}/>
         </div>
@@ -13,11 +13,19 @@ const renderField = ({ input, label, type, classType, meta: { touched, error, in
     </div>
 );
 
-renderField.propTypes = {
-    label: PropTypes.string.isRequired,
-    classType: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-};
+/* renderField.propTypes = {
+	label: PropTypes.string.isRequired,
+	classType: PropTypes.string,
+	type: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired,
+    input: PropTypes.func.isRequired,
+    meta: PropTypes.shape({
+        touched: PropTypes.bool,
+        error: PropTypes.string,
+        invalid: PropTypes.bool,
+        warning: PropTypes.bool,
+    }),
+}; */
 
 renderField.defaultProps = {
    meta: ''
