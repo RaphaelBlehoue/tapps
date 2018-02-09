@@ -7,15 +7,17 @@ import '../../Ui/styles/login.css';
 import logo from '../../Ui/images/logo_origin.png';
 import SecurityLayout from '../../Layouts/SecurityLayout';
 import renderField from '../../Components/renderField';
-import { SignInUser } from "../../Actions/UserActions";
+import renderPhoneField from '../../Components/renderPhoneField';
+import {SignInUser} from '../../Actions/UserActions';
 
 // Client-side validation informations
 const validate = data => {
     const errors = {};
     if(!data.username) errors.username = "Entrez votre email ou numéro de téléphone pour vous connecter";
-    if(!data.password) errors.password = "Le Mot de passe ne doit pas etre vide";
+	if(!data.password) errors.password = "Le Mot de passe ne doit pas etre vide";
     return errors;
 };
+
 
 class SignInFormContainer extends Component {
 
@@ -30,8 +32,9 @@ class SignInFormContainer extends Component {
 	}
 
 	handleFormSignInAndValidate = values => {
-		this.props.SignInUser(values);
+		console.log(values);
 	};
+	
 
 	render() {
 		const { handleSubmit, submitting } = this.props;
@@ -40,14 +43,14 @@ class SignInFormContainer extends Component {
 					<div className="panel panel-body login-form">
 						<div className="text-center">
 							<div>
-								<img src={logo} alt="" />
+								<img src={logo} alt="Toudeal Authentification" />
 							</div>
 							<h5 className="content-group-lg display-block pt-10">
 								Connectez-vous à votre compte
 							</h5>
 						</div>
-						<Field name="username" type="text" component={renderField} label="@Email ou numero de téléphone" classType="icon-user text-muted" />
-						<Field name="password" type="password" component={renderField} label="@Mot de passe" classType="icon-lock2 text-muted" />
+						<Field name="username" label="Numero de Téléphone (required)" component={renderField} />
+						<Field name="password" label="Mot de passe (required)" type="password" component={renderField} placeholder="Mot de passe" />
 						<div className="form-group">
 							<div className="row">
 								<div className="col-sm-8 text-right col-xs-offset-4">
@@ -80,5 +83,5 @@ class SignInFormContainer extends Component {
 
 export default connect(null, {SignInUser})(reduxForm({
     form: 'SignInValidation',
-    validate
+	validate
 })(SignInFormContainer));
