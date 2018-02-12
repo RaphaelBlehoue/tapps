@@ -7,7 +7,7 @@ import '../../Ui/styles/login.css';
 import logo from '../../Ui/images/logo_origin.png';
 import SecurityLayout from '../../Layouts/SecurityLayout';
 import renderField from '../../Components/renderField';
-import {SignInUser} from '../../Actions/UserActions';
+import {SignUpUser} from '../../Actions/UserActions';
 
 // Client-side validation informations
 const validate = data => {
@@ -20,7 +20,7 @@ const validate = data => {
 
 
 
-class SignInFormContainer extends Component {
+class SignUpFormContainer extends Component {
 
 	componentWillMount() {
 		const body = $('body');
@@ -32,7 +32,7 @@ class SignInFormContainer extends Component {
 		body.addClass('login-container login-cover');
 	}
 
-	handleFormSignInAndValidate = values => {
+	handleFormSignUpAndValidate = values => {
 		console.log(values);
 	};
 	
@@ -40,7 +40,7 @@ class SignInFormContainer extends Component {
 	render() {
 		const { handleSubmit, submitting } = this.props;
 		return <SecurityLayout>
-				<form onSubmit={handleSubmit(this.handleFormSignInAndValidate)}>
+				<form onSubmit={handleSubmit(this.handleFormSignUpAndValidate)}>
 					<div className="panel panel-body login-form">
 						<div className="text-center">
 							<div>
@@ -61,14 +61,14 @@ class SignInFormContainer extends Component {
 						</div>
 						<div className="form-group">
 							<button type="submit" className="btn bg-blue btn-block btn-xlg" disabled={submitting}>
-								Se Connecter
+								Créer un nouveau compte
 							</button>
 						</div>
 						<div className="content-divider text-muted form-group">
 							<span className="no-margin text-semibold">{`Vous n'avez pas de compte?`}</span>
 						</div>
-						<Link to="/accounts/signUp" className="btn text-orange-800 border-orange btn-flat btn-xlg btn-block content-group">
-							Créer un nouveau compte
+						<Link to="/accounts/signIn" className="btn text-orange-800 border-orange btn-flat btn-xlg btn-block content-group">
+							Se Connecter
 						</Link>
 						<span className="help-block text-center no-margin">
 							{"By continuing, you're confirming that you've read our"} <a>
@@ -82,7 +82,7 @@ class SignInFormContainer extends Component {
 	}
 }
 
-export default connect(null, {SignInUser})(reduxForm({
-    form: 'SignInValidation',
+export default connect(null, {SignUpUser})(reduxForm({
+    form: 'SignUpValidation',
 	validate
-})(SignInFormContainer));
+})(SignUpFormContainer));

@@ -39,3 +39,7 @@ export function SignInUser(credentials) {
             });
     }
 }
+
+export function SignUpUser (data) {
+    console.log(data);
+}
