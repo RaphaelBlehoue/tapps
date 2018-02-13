@@ -5,6 +5,7 @@ import SecurityRoute from './Routes/SecurityRoute';
 import userFeedContainer from './Containers/feed/userFeedContainer';
 import ProfileContainer from './Containers/Security/ProfileContainer';
 import SignInFormContainer from './Containers/Security/SignInFormContainer';
+import SignUpFormContainer from './Containers/Security/SignUpFormContainer';
 
 
 const App = ({ location }) => (
@@ -12,6 +13,7 @@ const App = ({ location }) => (
 		<FrontRoute location={location} path="/" exact component={userFeedContainer} />
 		<FrontRoute location={location} path="/profile" exact component={ProfileContainer} />
 		<SecurityRoute location={location} path="/accounts/signIn" exact component={SignInFormContainer} />
+		<SecurityRoute location={location} path="/accounts/signUp" exact component={SignUpFormContainer} />
 	</div>
 );
 
