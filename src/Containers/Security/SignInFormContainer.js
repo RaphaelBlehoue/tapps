@@ -28,26 +28,46 @@ class SignInFormContainer extends Component {
 		body.addClass('login-container login-cover');
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.auth.authenticated === true && nextProps.auth.status === 'authenticated') {
+			this.props.history.push('/');
+		}
+	}
+
 	handleFormSignInAndValidate = values => {
 		this.props.SignInUser(values);
 	};
 
 	render() {
 		const { handleSubmit, submitting } = this.props;
-		return <SecurityLayout>
+		return (
+			<SecurityLayout>
 				<form onSubmit={handleSubmit(this.handleFormSignInAndValidate)}>
 					<div className="panel panel-body login-form">
 						<div className="text-center">
 							<div>
 								<img src={logo} alt="Toudeal Authentification" />
 							</div>
-							<h5 className="content-group-lg display-block pt-10">
-								Connectez-vous à votre compte
-							</h5>
+							<h5 className="content-group-lg display-block pt-10">Connectez-vous à votre compte</h5>
 						</div>
-						{this.props.errorMessage && !this.props.errorMessage.authenticated && <div className="alert alert-danger no-border">{this.props.errorMessage}</div>}
-						<Field name="username" label="Entrez adresse Email (obligatoire)" placeholder="Entrez votre email..." type="text" component={renderField} />
-						<Field name="password" label="Mot de passe (obligatoire)" type="password" component={renderField} placeholder="Mot de passe" />
+						{this.props.errorMessage &&
+							!this.props.errorMessage.authenticated && (
+								<div className="alert alert-danger no-border">{this.props.errorMessage}</div>
+							)}
+						<Field
+							name="username"
+							label="Entrez adresse Email (obligatoire)"
+							placeholder="Entrez votre email..."
+							type="text"
+							component={renderField}
+						/>
+						<Field
+							name="password"
+							label="Mot de passe (obligatoire)"
+							type="password"
+							component={renderField}
+							placeholder="Mot de passe"
+						/>
 						<div className="form-group">
 							<div className="row">
 								<div className="col-sm-8 text-right col-xs-offset-4">
@@ -63,17 +83,20 @@ class SignInFormContainer extends Component {
 						<div className="content-divider text-muted form-group">
 							<span className="no-margin text-semibold">{`Vous n'avez pas de compte?`}</span>
 						</div>
-						<Link to="/accounts/signUp" className="btn text-orange-800 border-orange btn-flat btn-xlg btn-block content-group">
+						<Link
+							to="/accounts/signUp"
+							className="btn text-orange-800 border-orange btn-flat btn-xlg btn-block content-group"
+						>
 							Créer un nouveau compte
 						</Link>
 						<span className="help-block text-center no-margin">
-							{`By continuing, youre confirming that you've read our`} <a>
-								{`Terms & Conditions`}
-							</a> and <a>Cookie Policy</a>
+							{`By continuing, youre confirming that you've read our`} <a>{`Terms & Conditions`}</a> and{' '}
+							<a>Cookie Policy</a>
 						</span>
 					</div>
 				</form>
-			</SecurityLayout>;
+			</SecurityLayout>
+		);
 	}
 }
 
@@ -89,24 +112,23 @@ const validate = data => {
 
 function mapStateToProps (state) {
 	return {
-		errorMessage: state.auth.error
+		errorMessage: state.auth.error,
+		auth: state.auth
 	}
 }
 
 SignInFormContainer.propTypes = {
 	handleSubmit: PropTypes.func,
 	submitting: PropTypes.bool,
-	SignInUser: PropTypes.func,
-	authenticated: PropTypes.bool,
-	errorMessage: PropTypes.string
+	SignInUser: PropTypes.func.isRequired,
+	history: PropTypes.shape({
+		push:PropTypes.func.isRequired
+	}).isRequired
 };
 
 SignInFormContainer.defaultProps = {
 	handleSubmit: PropTypes.func,
 	submitting: PropTypes.bool,
-	SignInUser: PropTypes.func,
-	authenticated: PropTypes.bool,
-	errorMessage: PropTypes.string,
 };
 
 const reduxFormSignin = reduxForm({

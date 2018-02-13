@@ -31,7 +31,7 @@ const authReducer = (state = INITIAL_STATE, action) => {
                 status: action.payload.statusText 
             };
         case SIGN_IN_USER_SUCCESS:
-            return { ...state, error: null, loading: false, authenticated: true };
+            return { ...state, error: null, loading: false, authenticated: true, status: 'authenticated' };
         default:
             return state;
     }

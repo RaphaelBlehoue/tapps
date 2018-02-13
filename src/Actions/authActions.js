@@ -10,13 +10,13 @@ import { API_URL } from '../config';
 export function SignInUserRequest(formValues) {
     return {
         type: SIGN_IN_USER_REQUEST,
-        formValues
+        payload: formValues
     }
 }
 export function SignInUserSuccess(data) {
     return {
         type: SIGN_IN_USER_SUCCESS,
-        data
+        payload: data
     }
 }
 export function SignInUserFailure(errors) {
@@ -33,7 +33,8 @@ export function SignInUser(credentials) {
         dispatch(SignInUserRequest(credentials));
         try {
             const res = await axios.post(`${API_URL}/login_check`, credentials);
-            dispatch(SignInUserSuccess(res.data))
+            dispatch(SignInUserSuccess(res));
+            localStorage.setItem('td_sk', res.data.token);
         } catch(error) {
             dispatch(SignInUserFailure(error.response));
         }
