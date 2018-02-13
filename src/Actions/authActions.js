@@ -3,10 +3,9 @@ import {
     SIGN_IN_USER_REQUEST,
     SIGN_IN_USER_FAILURE,
     SIGN_IN_USER_SUCCESS
-} from '../Constants/User';
+} from '../Constants/index';
+import { API_URL } from '../config';
 
-//const ROOT_URL = (window.location.hostname === "localhost") ? "https://smart-api.dev/api" : "https://jsonplaceholder.typicode.com";
-const ROOT_URL = "/api/auth";
 
 export function SignInUserRequest(formValues) {
     return {
@@ -20,26 +19,27 @@ export function SignInUserSuccess(data) {
         data
     }
 }
-export function SignInUserFailure(dataError) {
+export function SignInUserFailure(errors) {
     return {
         type: SIGN_IN_USER_FAILURE,
-        dataError
+        payload: errors
     }
 }
 
 // User Sign In Action Event dispatch async Action
+
 export function SignInUser(credentials) {
-    return dispatch => {
+    return  async (dispatch) => {
         dispatch(SignInUserRequest(credentials));
-        return axios.post(`${ROOT_URL}/users/login`, credentials)
-            .then(response =>{
-                dispatch(SignInUserSuccess(response.data));
-            }).catch(error => {
-                dispatch(SignInUserFailure(error.response));
-            });
-    }
+        try {
+            const res = await axios.post(`${API_URL}/login_check`, credentials);
+            dispatch(SignInUserSuccess(res.data))
+        } catch(error) {
+            dispatch(SignInUserFailure(error.response));
+        }
+    };
 }
 
 export function SignUpUser (data) {
-    console.log(data);
+    console.log('data',data);
 }

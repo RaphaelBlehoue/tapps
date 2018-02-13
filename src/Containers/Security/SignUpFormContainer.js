@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Field , reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import $ from 'jquery/dist/jquery.min';
@@ -7,7 +8,7 @@ import '../../Ui/styles/login.css';
 import logo from '../../Ui/images/logo_origin.png';
 import SecurityLayout from '../../Layouts/SecurityLayout';
 import renderField from '../../Components/renderField';
-import {SignUpUser} from '../../Actions/UserActions';
+import {SignUpUser} from '../../Actions/authActions';
 
 // Client-side validation informations
 const validate = data => {
@@ -81,6 +82,16 @@ class SignUpFormContainer extends Component {
 			</SecurityLayout>;
 	}
 }
+
+SignUpFormContainer.propTypes = {
+	handleSubmit: PropTypes.func,
+	submitting: PropTypes.bool,
+};
+
+SignUpFormContainer.defaultProps = {
+	handleSubmit: PropTypes.func,
+	submitting: PropTypes.bool,
+};
 
 export default connect(null, {SignUpUser})(reduxForm({
     form: 'SignUpValidation',
