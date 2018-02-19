@@ -27,19 +27,15 @@ class SignInFormContainer extends Component {
 		const body = $('body');
 		body.addClass('login-container login-cover');
 	}
+	
 
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.auth.authenticated === true && nextProps.auth.status === 'authenticated') {
-			this.props.history.push('/');
-		}
-	}
 
 	handleFormSignInAndValidate = values => {
 		this.props.SignInUser(values);
 	};
 
 	render() {
-		const { handleSubmit, submitting } = this.props;
+		const { handleSubmit, submitting, errorMessage } = this.props;
 		return (
 			<SecurityLayout>
 				<form onSubmit={handleSubmit(this.handleFormSignInAndValidate)}>
@@ -50,9 +46,9 @@ class SignInFormContainer extends Component {
 							</div>
 							<h5 className="content-group-lg display-block pt-10">Connectez-vous à votre compte</h5>
 						</div>
-						{this.props.errorMessage &&
-							!this.props.errorMessage.authenticated && (
-								<div className="alert alert-danger no-border">{this.props.errorMessage}</div>
+						{errorMessage &&
+							!errorMessage.authenticated && (
+								<div className="alert alert-danger no-border">{errorMessage}</div>
 							)}
 						<Field
 							name="username"
@@ -110,6 +106,7 @@ const validate = data => {
     return errors;
 };
 
+
 function mapStateToProps (state) {
 	return {
 		errorMessage: state.auth.error,
@@ -118,17 +115,17 @@ function mapStateToProps (state) {
 }
 
 SignInFormContainer.propTypes = {
-	handleSubmit: PropTypes.func,
-	submitting: PropTypes.bool,
-	SignInUser: PropTypes.func.isRequired,
-	history: PropTypes.shape({
-		push:PropTypes.func.isRequired
-	}).isRequired
+	handleSubmit: PropTypes.func.isRequired,
+	submitting: PropTypes.bool.isRequired,
+	SignInUser: PropTypes.func.isRequired
 };
 
 SignInFormContainer.defaultProps = {
-	handleSubmit: PropTypes.func,
-	submitting: PropTypes.bool,
+	auth: PropTypes.shape({
+		status: PropTypes.string.isRequired,
+		authenticated: PropTypes.bool.isRequired,
+	}),
+	errorMessage: PropTypes.string,
 };
 
 const reduxFormSignin = reduxForm({

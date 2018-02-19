@@ -1,21 +1,21 @@
 import 'babel-polyfill';
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
-import  configureStore from './Stores/ConfigureStore';
+import { configureStore } from './Stores/ConfigureStore';
 import App from "./App";
 import registerServiceWorker from './registerServiceWorker';
+import { AuthCheck } from './Actions/loggedActions';
 
-const store = configureStore;
 
-render(
-    <BrowserRouter>
-        <Provider store={store}>
-            <Route component={App}/>
-        </Provider>
-    </BrowserRouter>,
-    document.getElementById('root')
+const store = configureStore();
+
+store.dispatch(AuthCheck());
+
+ReactDOM.render(
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	document.getElementById('root')
 );
-
 registerServiceWorker();

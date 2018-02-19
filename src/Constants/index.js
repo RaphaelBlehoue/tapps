@@ -1,9 +1,21 @@
+// Logged checking Action
+
+export const AUTH_CHECK_REQUEST = 'AUTH_CHECK_REQUEST';
+export const AUTH_CHECK_SUCCESS = 'AUTH_CHECK_SUCCESS';
+export const AUTH_CHECK_FAILURE = 'AUTH_CHECK_FAILURE';
+
 // Login action User connected
 
 export const SIGN_IN_USER_REQUEST = 'SIGN_IN_USER_REQUEST';
 export const SIGN_IN_USER_SUCCESS = 'SIGN_IN_USER_SUCCESS';
 export const SIGN_IN_USER_FAILURE = 'SIGN_IN_USER_FAILURE';
 
+
+// Logout action User connected
+
+export const SIGN_OUT_USER_REQUEST = 'SIGN_OUT_USER_REQUEST';
+export const SIGN_OUT_USER_SUCCESS = 'SIGN_OUT_USER_SUCCESS';
+export const SIGN_OUT_USER_FAILURE = 'SIGN_OUT_USER_FAILURE';
 
 // Sign action User 
 

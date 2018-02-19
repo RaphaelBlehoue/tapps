@@ -60,6 +60,7 @@
                 },
                 "allowChildren": false
             }
-        ]
+        ],
+        "no-console": "off"
     }
 }
