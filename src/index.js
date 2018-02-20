@@ -10,7 +10,9 @@ import { AuthCheck } from './Actions/loggedActions';
 
 const store = configureStore();
 
+
 store.dispatch(AuthCheck());
+
 
 ReactDOM.render(
 	<Provider store={store}>

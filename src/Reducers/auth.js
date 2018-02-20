@@ -11,7 +11,6 @@ const INITIAL_STATE = {
 	loading: false,
 	role: [],
     email: null,
-    token:null
 };
 
 const auth = (state = INITIAL_STATE, action) => {
@@ -32,8 +31,7 @@ const auth = (state = INITIAL_STATE, action) => {
                 loading: false,
                 status: 'authenticated',
                 email: action.data.payload.username || action.data.username,
-                role : action.data.payload.roles || action.data.roles,
-                token: action.data.payload.token
+                role : action.data.payload.roles || action.data.roles
             };  
         default:
             return state;

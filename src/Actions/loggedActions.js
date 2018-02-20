@@ -20,13 +20,11 @@ import api from "../config";
 }
 
 // Verifie if Current User is logged Or is false Logout
-
 export function AuthCheck(){
     return async(dispatch) => {
         dispatch(AuthCheckRequest());
         try {
-            const res = await api.logged.getLogged();
-            console.log(res);
+            await api.logged.getLogged();
             dispatch(AuthCheckSucess());
         } catch(error){
             dispatch(AuthCheckFailure());

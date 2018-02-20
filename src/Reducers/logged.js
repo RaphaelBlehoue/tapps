@@ -2,7 +2,7 @@ import { AUTH_CHECK_REQUEST, AUTH_CHECK_SUCCESS, AUTH_CHECK_FAILURE } from '../C
 
 const INITIALSTATE = {
 	isAuthenticated: 'PENDING',
-	loading: false,
+	loading: false
 };
 
 const logged = (state=INITIALSTATE, action) => {
@@ -10,7 +10,7 @@ const logged = (state=INITIALSTATE, action) => {
 		case AUTH_CHECK_REQUEST:
 			return { ...state, loading: true, isAuthenticated: 'AWAIT' };
 		case AUTH_CHECK_SUCCESS:
-			return {...state, loading: false, isAuthenticated: 'AUTH'}
+			return {...state, loading: false, isAuthenticated: 'AUTH' }
 		case AUTH_CHECK_FAILURE:
 			return {...state, loading: false, isAuthenticated: 'UNAUTH'}
 		default:

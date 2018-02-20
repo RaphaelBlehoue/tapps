@@ -12,7 +12,6 @@ import SignInFormContainer from './Containers/Security/SignInFormContainer';
 import SignUpFormContainer from './Containers/Security/SignUpFormContainer';
 import Home from './Containers/Home';
 
-const token = localStorage.getItem('tdtk');
 
 const renderSpiner = () => (
 	<div>Loading ...</div>
@@ -94,7 +93,7 @@ SecureRoute.propTypes = {
 const mapStateToProps = (state) => {
 	return { 
 		isAuthenticated: state.logged.isAuthenticated,
-		checkToken: state.auth.token 
+		checkToken: state.logged.token
 	};
 };
 
