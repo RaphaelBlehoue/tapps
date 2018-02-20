@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import $ from 'jquery/dist/jquery.min';
 import FrontLayout from '../../Layouts/FrontLayout';
 import FeedBodyComponent from '../../Components/feed/FeedBodyComponent';
@@ -28,4 +29,4 @@ class userFeedContainer extends Component {
     }
 }
 
-export default userFeedContainer;
+export default connect(null)(userFeedContainer);
