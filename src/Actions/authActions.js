@@ -34,7 +34,7 @@ export function SignInUser(credentials) {
         dispatch(SignInUserRequest(credentials));
         try {
             const res = await api.auth.login(credentials);
-            localStorage.setItem('tdtk', res.data.token);
+            localStorage.setItem('__Host-toudeal', res.data.token);
             dispatch(SignInUserSuccess(res.data));
             dispatch(AuthCheckSucess());
         } catch(error) {

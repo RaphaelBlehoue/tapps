@@ -28,7 +28,7 @@ export function AuthCheck(){
             dispatch(AuthCheckSucess());
         } catch(error){
             dispatch(AuthCheckFailure());
-            localStorage.removeItem('tdtk');
+            localStorage.removeItem('__Host-toudeal');
         }
     }
 }

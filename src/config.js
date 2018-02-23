@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_URL = process.env.NODE_ENV === 'production' ? 'http://api.toudeal.com/api' : 'http://toudeal-api.test/api';
 
 
-const token = localStorage.getItem('tdtk');
+const token = localStorage.getItem('__Host-toudeal');
 const options = {
 	headers: {
 		Authorization: token ? `Bearer ${token}` : '',

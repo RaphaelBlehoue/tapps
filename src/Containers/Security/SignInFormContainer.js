@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import $ from 'jquery/dist/jquery.min';
-import '../../Ui/styles/login.css';
+import '../../Ui/login.css';
 import logo from '../../Ui/images/logo_origin.png';
 import SecurityLayout from '../../Layouts/SecurityLayout';
 import renderField from '../../Components/renderField';
 import { SignInUser } from '../../Actions/authActions';
+import { AuthCheck } from '../../Actions/loggedActions';
 
 
 class SignInFormContainer extends Component {
@@ -21,6 +22,8 @@ class SignInFormContainer extends Component {
 	componentWillMount() {
 		const body = $('body');
 		body.removeClass('login-container login-cover');
+		const token = localStorage.getItem('__Host-toudeal');
+		if (token) this.props.AuthCheck();
 	}
 
 	componentDidMount() {
@@ -117,7 +120,8 @@ function mapStateToProps (state) {
 SignInFormContainer.propTypes = {
 	handleSubmit: PropTypes.func.isRequired,
 	submitting: PropTypes.bool.isRequired,
-	SignInUser: PropTypes.func.isRequired
+	SignInUser: PropTypes.func.isRequired,
+	AuthCheck: PropTypes.func.isRequired
 };
 
 SignInFormContainer.defaultProps = {
@@ -133,4 +137,4 @@ const reduxFormSignin = reduxForm({
 	validate,
 })(SignInFormContainer);
 
-export default connect(mapStateToProps, { SignInUser })(reduxFormSignin);
+export default connect(mapStateToProps, { SignInUser, AuthCheck })(reduxFormSignin);

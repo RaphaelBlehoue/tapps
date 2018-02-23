@@ -3,23 +3,19 @@ import PropTypes from 'prop-types';
 import { ConnectedRouter } from "react-router-redux";
 import { Route, Redirect, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import { history } from "./Stores/ConfigureStore";
-
+import { HocLoading } from './Hoc';
 import userFeedContainer from './Containers/feed/userFeedContainer';
 import ProfileContainer from './Containers/Security/ProfileContainer';
 import SignInFormContainer from './Containers/Security/SignInFormContainer';
 import SignUpFormContainer from './Containers/Security/SignUpFormContainer';
 import Home from './Containers/Home';
+import { Spinner } from './Components';
 
-
-const renderSpiner = () => (
-	<div>Loading ...</div>
-);
 
 const SecureRoute = ({ isAuthenticated, component: Component, ...rest }) => {
 	if (isAuthenticated === 'AWAIT') {
-		return renderSpiner();
+		return <Spinner/>;
 	}
 	return (
 		<Route
@@ -38,7 +34,7 @@ const SecureRoute = ({ isAuthenticated, component: Component, ...rest }) => {
 
 const PublicRoute = ({ isAuthenticated, component: Component, ...rest }) => {
 	if (isAuthenticated === 'AWAIT') {
-		return renderSpiner();
+		return <Spinner />;
 	}
 	return (
 		<Route 
@@ -54,7 +50,7 @@ const PublicRoute = ({ isAuthenticated, component: Component, ...rest }) => {
 
 const App = ({ isAuthenticated }) => (
 	<ConnectedRouter history={history}>
-		<div>
+		<HocLoading>
 			<Switch>
 				<SecureRoute isAuthenticated={isAuthenticated} path="/feed" exact component={userFeedContainer} />
 				<SecureRoute isAuthenticated={isAuthenticated} path="/profile" exact component={ProfileContainer} />
@@ -72,7 +68,7 @@ const App = ({ isAuthenticated }) => (
 					component={SignUpFormContainer}
 				/>
 			</Switch>
-		</div>
+		</HocLoading>
 	</ConnectedRouter>
 );
 
