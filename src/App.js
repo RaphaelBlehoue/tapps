@@ -20,7 +20,7 @@ const SecureRoute = ({ isAuthenticated, component: Component, ...rest }) => {
 	return (
 		<Route
 			{...rest}
-			render={props =>
+			render={(props) =>
 				isAuthenticated === 'AUTH' ? (
 					<Component {...props} />
 				) : (
@@ -39,7 +39,7 @@ const PublicRoute = ({ isAuthenticated, component: Component, ...rest }) => {
 	return (
 		<Route 
 			{...rest}
-			render={ props  => (
+			render={ (props)  => (
 				isAuthenticated === 'UNAUTH' 
 				? (<Component {...props} />) 
 				: (<Redirect to='/feed' />)
@@ -50,7 +50,7 @@ const PublicRoute = ({ isAuthenticated, component: Component, ...rest }) => {
 
 const App = ({ isAuthenticated }) => (
 	<ConnectedRouter history={history}>
-		<HocLoading>
+		<div>
 			<Switch>
 				<SecureRoute isAuthenticated={isAuthenticated} path="/feed" exact component={userFeedContainer} />
 				<SecureRoute isAuthenticated={isAuthenticated} path="/profile" exact component={ProfileContainer} />
@@ -68,7 +68,7 @@ const App = ({ isAuthenticated }) => (
 					component={SignUpFormContainer}
 				/>
 			</Switch>
-		</HocLoading>
+		</div>
 	</ConnectedRouter>
 );
 
@@ -88,8 +88,7 @@ SecureRoute.propTypes = {
 
 const mapStateToProps = (state) => {
 	return { 
-		isAuthenticated: state.logged.isAuthenticated,
-		checkToken: state.logged.token
+		isAuthenticated: state.logged.isAuthenticated
 	};
 };
 

@@ -1,18 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const Home = () => {
-    return (
-        <div>
-            Home page
-        </div>
-    );
-};
+const Home = () => <div>Home page</div>
 
-const mapStateToProps = (state) => {
-    return {
-        isAuthenticated: state.auth.isAuthenticated
-    }
-}
+// const mapStateToProps = (state) => { isAuthenticated: state.auth.isAuthenticated }
 
-export default connect(mapStateToProps)(Home);
+export default connect(null)(Home);

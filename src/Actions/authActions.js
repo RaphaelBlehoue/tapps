@@ -3,6 +3,7 @@ import {
     SIGN_IN_USER_FAILURE,
     SIGN_IN_USER_SUCCESS
 } from '../Constants/index';
+import { AuthParams, TOKEN_KEY } from '../Utils';
 import { AuthCheckSucess } from "../Actions/loggedActions";
 import api from '../config';
 
@@ -34,10 +35,14 @@ export function SignInUser(credentials) {
         dispatch(SignInUserRequest(credentials));
         try {
             const res = await api.auth.login(credentials);
-            localStorage.setItem('__Host-toudeal', res.data.token);
+            AuthParams.setToken(res.data.token, true);
             dispatch(SignInUserSuccess(res.data));
             dispatch(AuthCheckSucess());
         } catch(error) {
+            const token = AuthParams.getToken();
+            if (token) {
+                AuthParams.remove(TOKEN_KEY)
+            }
             dispatch(SignInUserFailure(error.response.data));
         }
     };

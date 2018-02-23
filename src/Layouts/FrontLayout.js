@@ -5,7 +5,7 @@ import Footer from '../Components/Footer';
 import SlideSwipeableComponent from '../Components/CarouselAndSlides/SlideSwipeableComponent';
 
 
-const FrontLayout = props => (
+const FrontLayout = (props) => (
 	<div>
 		<Navbar />
 		<SlideSwipeableComponent />

@@ -22,8 +22,6 @@ class SignInFormContainer extends Component {
 	componentWillMount() {
 		const body = $('body');
 		body.removeClass('login-container login-cover');
-		const token = localStorage.getItem('__Host-toudeal');
-		if (token) this.props.AuthCheck();
 	}
 
 	componentDidMount() {
@@ -33,7 +31,7 @@ class SignInFormContainer extends Component {
 	
 
 
-	handleFormSignInAndValidate = values => {
+	handleFormSignInAndValidate = (values) => {
 		this.props.SignInUser(values);
 	};
 
@@ -101,7 +99,7 @@ class SignInFormContainer extends Component {
 
 // Client-side validation informations
 
-const validate = data => {
+const validate = (data) => {
     const errors = {};
     if(!data.username) errors.username = "Entrez votre email pour vous connecter";
 	if(!data.password) errors.password = "Le Mot de passe ne doit pas etre vide";
