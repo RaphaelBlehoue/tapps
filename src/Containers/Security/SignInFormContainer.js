@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import $ from 'jquery/dist/jquery.min';
-import '../../Ui/styles/login.css';
+import '../../Ui/login.css';
 import logo from '../../Ui/images/logo_origin.png';
 import SecurityLayout from '../../Layouts/SecurityLayout';
 import renderField from '../../Components/renderField';
 import { SignInUser } from '../../Actions/authActions';
+import { AuthCheck } from '../../Actions/loggedActions';
 
 
 class SignInFormContainer extends Component {
@@ -30,7 +31,7 @@ class SignInFormContainer extends Component {
 	
 
 
-	handleFormSignInAndValidate = values => {
+	handleFormSignInAndValidate = (values) => {
 		this.props.SignInUser(values);
 	};
 
@@ -98,7 +99,7 @@ class SignInFormContainer extends Component {
 
 // Client-side validation informations
 
-const validate = data => {
+const validate = (data) => {
     const errors = {};
     if(!data.username) errors.username = "Entrez votre email pour vous connecter";
 	if(!data.password) errors.password = "Le Mot de passe ne doit pas etre vide";
@@ -117,7 +118,8 @@ function mapStateToProps (state) {
 SignInFormContainer.propTypes = {
 	handleSubmit: PropTypes.func.isRequired,
 	submitting: PropTypes.bool.isRequired,
-	SignInUser: PropTypes.func.isRequired
+	SignInUser: PropTypes.func.isRequired,
+	AuthCheck: PropTypes.func.isRequired
 };
 
 SignInFormContainer.defaultProps = {
@@ -133,4 +135,4 @@ const reduxFormSignin = reduxForm({
 	validate,
 })(SignInFormContainer);
 
-export default connect(mapStateToProps, { SignInUser })(reduxFormSignin);
+export default connect(mapStateToProps, { SignInUser, AuthCheck })(reduxFormSignin);

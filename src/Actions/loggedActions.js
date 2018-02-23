@@ -1,4 +1,5 @@
 import { AUTH_CHECK_REQUEST, AUTH_CHECK_SUCCESS, AUTH_CHECK_FAILURE } from '../Constants/index';
+import { AuthParams, TOKEN_KEY } from '../Utils';
 import api from "../config";
 
  export function AuthCheckRequest() {
@@ -27,8 +28,11 @@ export function AuthCheck(){
             await api.logged.getLogged();
             dispatch(AuthCheckSucess());
         } catch(error){
+            const token = AuthParams.getToken();
+			if (token) {
+				AuthParams.remove(TOKEN_KEY);
+			}
             dispatch(AuthCheckFailure());
-            localStorage.removeItem('tdtk');
         }
     }
 }

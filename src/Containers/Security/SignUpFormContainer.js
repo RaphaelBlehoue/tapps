@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Field , reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import $ from 'jquery/dist/jquery.min';
-import '../../Ui/styles/login.css';
+import '../../Ui/login.css';
 import logo from '../../Ui/images/logo_origin.png';
 import SecurityLayout from '../../Layouts/SecurityLayout';
 import renderField from '../../Components/renderField';

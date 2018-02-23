@@ -4,7 +4,7 @@ import FrontLayout from '../../Layouts/FrontLayout';
 
 const ProfileContainer = () => (
 	<FrontLayout>
-		<h2>{this.props.users.email}</h2>
+		<h2>Profil</h2>
 	</FrontLayout>
 );
 
