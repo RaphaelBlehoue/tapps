@@ -88,7 +88,7 @@ SecureRoute.propTypes = {
 
 const mapStateToProps = (state) => {
 	return { 
-		isAuthenticated: state.logged.isAuthenticated
+		isAuthenticated: state.user.isAuthenticated
 	};
 };
 

@@ -1,8 +1,8 @@
-// Logged checking Action
+// USER ACTION Action
 
-export const AUTH_CHECK_REQUEST = 'AUTH_CHECK_REQUEST';
-export const AUTH_CHECK_SUCCESS = 'AUTH_CHECK_SUCCESS';
-export const AUTH_CHECK_FAILURE = 'AUTH_CHECK_FAILURE';
+export const GET_USER_REQUEST = 'GET_USER_REQUEST';
+export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
+export const GET_USER_FAILURE = 'GET_USER_FAILURE';
 
 // Login action User connected
 
