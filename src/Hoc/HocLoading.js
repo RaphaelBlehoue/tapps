@@ -13,10 +13,10 @@ class HocLoading extends Component {
 }
 
 HocLoading.propTypes = {
-   children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
-    ]).isRequired
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 };
 
 export default connect(null)(HocLoading);

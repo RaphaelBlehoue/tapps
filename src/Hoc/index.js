@@ -1,5 +1,5 @@
 import HocLoading from './HocLoading';
 
 export {
-    HocLoading
+  HocLoading
 }
