@@ -48,7 +48,7 @@ class SignInFormContainer extends Component {
 								Connectez-vous à votre compte
 							</h5>
 						</div>
-						{isError && <div className="alert alert-danger no-border">{errors}</div>}
+						{ isError && <div className="alert alert-danger no-border">{errors}</div> }
 						<Field name="username" label="Entrez adresse Email (obligatoire)" placeholder="Entrez votre email..." type="text" component={renderField} />
 						<Field name="password" label="Mot de passe (obligatoire)" type="password" placeholder="Mot de passe" component={renderField} />
 						<div className="form-group">
@@ -103,7 +103,12 @@ const mapStateToProps = (state) => {
 SignInFormContainer.propTypes = {
 	handleSubmit: PropTypes.func.isRequired,
 	submitting: PropTypes.bool.isRequired,
-	SignInUser: PropTypes.func.isRequired
+	SignInUser: PropTypes.func.isRequired,
+};
+
+SignInFormContainer.defaultProps = {
+	isError: PropTypes.bool,
+	errors: PropTypes.string,
 };
 
 SignInFormContainer.defaultProps = {

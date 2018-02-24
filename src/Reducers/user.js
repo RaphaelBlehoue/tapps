@@ -10,7 +10,7 @@ const user = (state=INITIALSTATE, action) => {
 		case GET_USER_REQUEST:
 			return { ...state, loading: true, isAuthenticated: 'AWAIT' };
 		case GET_USER_SUCCESS:
-			return { ...state, loading: false, isAuthenticated: 'AUTH', ...(action.data.payload || action.user) };
+			return { ...state, loading: false, isAuthenticated: 'AUTH', infoUser: action.data.payload || action.data };
 		case GET_USER_FAILURE:
 			return { ...state, loading: false, isAuthenticated: 'UNAUTH' };
 		default:

@@ -62,6 +62,7 @@
                 "allowChildren": false
             }
         ],
+      "react/no-unused-prop-types": [1],  
       "no-console": "off",
       "arrow-parens": [
         "error",

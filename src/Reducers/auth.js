@@ -3,7 +3,10 @@ import {
 } from '../Constants';
 
 
-const INITIAL_STATE = {};
+const INITIAL_STATE = {
+	error: null,
+	errorStatus: false,
+};
 
 const auth = (state = INITIAL_STATE, action={}) => {
     switch (action.type){
