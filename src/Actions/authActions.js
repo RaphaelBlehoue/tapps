@@ -2,9 +2,9 @@ import {
     SIGN_IN_USER_REQUEST,
     SIGN_IN_USER_FAILURE,
     SIGN_IN_USER_SUCCESS
-} from '../Constants/index';
+} from '../Constants';
 import { AuthParams, TOKEN_KEY } from '../Utils';
-import { AuthCheckSucess } from "../Actions/loggedActions";
+import { getUserSucess } from "../Actions/userActions";
 import api from '../config';
 
 
@@ -37,7 +37,7 @@ export function SignInUser(credentials) {
             const res = await api.auth.login(credentials);
             AuthParams.setToken(res.data.token, true);
             dispatch(SignInUserSuccess(res.data));
-            dispatch(AuthCheckSucess());
+            dispatch(getUserSucess(res.data));
         } catch(error) {
             const token = AuthParams.getToken();
             if (token) {

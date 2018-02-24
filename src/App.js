@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ConnectedRouter } from "react-router-redux";
+import { ConnectedRouter } from 'react-router-redux';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { history } from "./Stores/ConfigureStore";
+import { history } from './Stores/ConfigureStore';
 import { HocLoading } from './Hoc';
 import userFeedContainer from './Containers/feed/userFeedContainer';
 import ProfileContainer from './Containers/Security/ProfileContainer';
@@ -12,15 +12,11 @@ import SignUpFormContainer from './Containers/Security/SignUpFormContainer';
 import Home from './Containers/Home';
 import { Spinner } from './Components';
 
-
 const SecureRoute = ({ isAuthenticated, component: Component, ...rest }) => {
-	if (isAuthenticated === 'AWAIT') {
-		return <Spinner/>;
-	}
 	return (
 		<Route
 			{...rest}
-			render={(props) =>
+			render={ (props) =>
 				isAuthenticated === 'AUTH' ? (
 					<Component {...props} />
 				) : (
@@ -31,49 +27,36 @@ const SecureRoute = ({ isAuthenticated, component: Component, ...rest }) => {
 	);
 };
 
-
 const PublicRoute = ({ isAuthenticated, component: Component, ...rest }) => {
 	if (isAuthenticated === 'AWAIT') {
 		return <Spinner />;
 	}
 	return (
-		<Route 
+		<Route
 			{...rest}
-			render={ (props)  => (
-				isAuthenticated === 'UNAUTH' 
-				? (<Component {...props} />) 
-				: (<Redirect to='/feed' />)
-			)}
+			render={ (props) => (isAuthenticated === 'UNAUTH' ? <Component {...props} /> : <Redirect to="/feed" />)}
 		/>
 	);
-}
+};
 
 const App = ({ isAuthenticated }) => (
 	<ConnectedRouter history={history}>
 		<div>
 			<Switch>
-				<SecureRoute isAuthenticated={isAuthenticated} path="/feed" exact component={userFeedContainer} />
-				<SecureRoute isAuthenticated={isAuthenticated} path="/profile" exact component={ProfileContainer} />
-				<Route exact path="/" component={Home} />
-				<PublicRoute
-					isAuthenticated={isAuthenticated}
-					path="/accounts/signIn"
-					exact
-					component={SignInFormContainer}
-				/>
-				<PublicRoute
-					isAuthenticated={isAuthenticated}
-					path="/accounts/signUp"
-					exact
-					component={SignUpFormContainer}
-				/>
+				<HocLoading>
+					<PublicRoute exact path="/" component={Home} />
+					<PublicRoute isAuthenticated={isAuthenticated} path="/accounts/signIn" exact component={SignInFormContainer}/>
+					<PublicRoute isAuthenticated={isAuthenticated} path="/accounts/signUp" exact component={SignUpFormContainer}/>				
+					<SecureRoute isAuthenticated={isAuthenticated} path="/feed" exact component={userFeedContainer} />
+					<SecureRoute isAuthenticated={isAuthenticated} path="/profile" exact component={ProfileContainer} />
+				</HocLoading>
 			</Switch>
 		</div>
 	</ConnectedRouter>
 );
 
 App.propTypes = {
-	isAuthenticated: PropTypes.string.isRequired
+	isAuthenticated: PropTypes.string.isRequired,
 };
 
 PublicRoute.propTypes = {
@@ -87,8 +70,8 @@ SecureRoute.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-	return { 
-		isAuthenticated: state.logged.isAuthenticated
+	return {
+		isAuthenticated: state.user.isAuthenticated,
 	};
 };
 

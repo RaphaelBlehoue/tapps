@@ -2,11 +2,11 @@ import { combineReducers } from 'redux';
 import { reducer as form} from 'redux-form';
 import { routerReducer as router } from 'react-router-redux';
 import auth from './auth';
-import logged from './logged';
+import user from './user';
 
 const rootReducer = combineReducers({
 	auth,
-	logged,
+	user,
 	form,
 	router
 });

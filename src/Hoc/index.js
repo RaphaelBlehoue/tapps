@@ -1,4 +1,4 @@
-import HocLoading from './HocLoading';
+import HocLoading from './HocLoading'
 
 export {
   HocLoading
