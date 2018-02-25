@@ -20,7 +20,7 @@ export default {
 	auth: {
 		login: (credentials) => axios.post(`${API_URL}/login_check`, credentials),
 	},
-	logged: {
-		getLogged: () => axios.get(`${API_URL}/user/logged`, options),
+	user: {
+		fetch: () => axios.get(`${API_URL}/user/logged`, options),
 	},
 };

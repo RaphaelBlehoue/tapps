@@ -26,7 +26,7 @@ export function fetchUser(){
     return async(dispatch) => {
         dispatch(getUserRequest());
         try {
-            const res = await api.logged.getLogged();
+            const res = await api.user.fetch();
             dispatch(getUserSucess(res.data));
         } catch(error){
             const token = AuthParams.getToken();
