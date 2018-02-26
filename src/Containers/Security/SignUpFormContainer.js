@@ -7,11 +7,11 @@ import $ from 'jquery/dist/jquery.min';
 import '../../Ui/login.css';
 import logo from '../../Ui/images/logo_origin.png';
 import SecurityLayout from '../../Layouts/SecurityLayout';
-import renderField from '../../Components/renderField';
+import { renderField } from '../../Components/';
 import {SignUpUser} from '../../Actions/authActions';
 
 // Client-side validation informations
-const validate = data => {
+const validate = (data) => {
     const errors = {};
     if(!data.username) errors.username = "Entrez votre email pour vous connecter";
 	if(!data.password) errors.password = "Le Mot de passe ne doit pas etre vide";

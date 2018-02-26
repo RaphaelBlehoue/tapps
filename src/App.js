@@ -3,6 +3,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import { Route, Switch } from 'react-router-dom';
 import { history } from './Stores/ConfigureStore';
 import { HocLoading, AuthorizationRoutes, NoUserLoggedAccess } from './Hoc';
+import NotFoundPage from './Containers/NotFoundPage';
 import userFeedContainer from './Containers/feed/userFeedContainer';
 import ProfileContainer from './Containers/Security/ProfileContainer';
 import SignInFormContainer from './Containers/Security/SignInFormContainer';
@@ -19,6 +20,7 @@ const App = () => (
 					<Route path="/feed" exact component={AuthorizationRoutes(userFeedContainer)} />
 					<Route path="/profile" exact component={AuthorizationRoutes(ProfileContainer)} />
 					<Route exact path="/" component={Home} />
+					<Route path="*" exact component={NotFoundPage} />
 				</Switch>
 			</HocLoading>
 		</div>

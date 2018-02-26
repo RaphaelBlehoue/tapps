@@ -7,7 +7,7 @@ import $ from 'jquery/dist/jquery.min';
 import '../../Ui/login.css';
 import logo from '../../Ui/images/logo_origin.png';
 import SecurityLayout from '../../Layouts/SecurityLayout';
-import renderField from '../../Components/renderField';
+import {renderField } from '../../Components/';
 import { SignInUser } from '../../Actions/authActions';
 
 

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import $ from 'jquery/dist/jquery.min';
 import FrontLayout from '../../Layouts/FrontLayout';
 import FeedBodyComponent from '../../Components/feed/FeedBodyComponent';
 import SideBarComponent from '../../Components/Sidebars/SideBarComponent';
 import SecondSideBarComponent from '../../Components/Sidebars/SecondSideBarComponent';
+
+const $ = window.jQuery;
 
 class userFeedContainer extends Component {
 

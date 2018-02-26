@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Navbar from '../Components/Navbars/Navbar';
+import NavbarContainer from '../Containers/NavbarContainer';
 import Footer from '../Components/Footer';
 import SlideSwipeableComponent from '../Components/CarouselAndSlides/SlideSwipeableComponent';
 
 
-const FrontLayout = (props) => (
+const FrontLayout = ({children}) => (
 	<div>
-		<Navbar />
+		<NavbarContainer />
 		<SlideSwipeableComponent />
 		<div className="page-container">
-			<div className="page-content">{props.children}</div>
+			<div className="page-content">
+				{children}
+			</div>
 		</div>
-		<Footer />
+		<Footer/>
 	</div>
 );
 
