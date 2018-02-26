@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SelectingList = () => (
+const SelectFieldWrapper = () => (
 	<div className="btn-group btn-group bootstrap-select input-group-btn input-xlg input-xlg-2">
 		<select>
 			<option value="AK">Alaska</option>
@@ -12,4 +12,4 @@ const SelectingList = () => (
 	</div>
 );
 
-export default SelectingList;
+export default SelectFieldWrapper;

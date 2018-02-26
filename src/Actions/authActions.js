@@ -4,7 +4,7 @@ import {
     SIGN_IN_USER_SUCCESS
 } from '../Constants';
 import { AuthParams, TOKEN_KEY } from '../Utils';
-import { getUserSucess } from "../Actions/userActions";
+import { getUserSucess, fetchUser } from "../Actions/userActions";
 import api from '../config';
 
 
@@ -38,6 +38,7 @@ export function SignInUser(credentials) {
             AuthParams.setToken(res.data.token, true);
             dispatch(SignInUserSuccess(res.data));
             dispatch(getUserSucess(res.data));
+            dispatch(fetchUser());
         } catch(error) {
             const token = AuthParams.getToken();
             if (token) {

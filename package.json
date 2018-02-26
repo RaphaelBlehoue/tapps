@@ -48,8 +48,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint src",
-    "build-css": "less-watch-compiler --run-once --source-map  public/assets/less/_main_full  public/assets/css",
-    "watch-css": "npm run build-css && less-watch-compiler public/assets/less/_main_full  public/assets/css"
+    "build-css": "less-watch-compiler --run-once --source-map  src/Ui/assets/less/_main_full  src/Ui/assets/css",
+    "watch-css": "npm run build-css && less-watch-compiler src/Ui/assets/less/_main_full  src/Ui/assets/css"
   },
   "devDependencies": {
     "eslint": "^4.17.0",
