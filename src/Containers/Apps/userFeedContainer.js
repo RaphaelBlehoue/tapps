@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import FrontLayout from '../../Layouts/FrontLayout';
+import { 
+    CardContainer,
+    SlideSwipeableComponent,
+    SideBarComponent,
+    SecondSideBarComponent
+} from '../../Components';
 import FeedBodyComponent from '../../Components/feed/FeedBodyComponent';
-import SideBarComponent from '../../Components/Sidebars/SideBarComponent';
-import SecondSideBarComponent from '../../Components/Sidebars/SecondSideBarComponent';
 
 const $ = window.jQuery;
 
@@ -21,11 +24,14 @@ class userFeedContainer extends Component {
 
     render() {
         return (
-            <FrontLayout>
-                <SideBarComponent />
-                <SecondSideBarComponent />
-                <FeedBodyComponent />
-            </FrontLayout>
+            <div>
+                <SlideSwipeableComponent/>
+                <CardContainer>
+                    <SideBarComponent />
+                    <SecondSideBarComponent />
+                    <FeedBodyComponent />
+                </CardContainer>
+            </div>
         );
     }
 }

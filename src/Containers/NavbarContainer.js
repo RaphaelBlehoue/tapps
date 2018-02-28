@@ -10,6 +10,7 @@ import {
 	CardBarUserProfilWrapper,
 	TagNavLink 
 } from '../Components';
+import NavbarBottom from '../Components/NavBars/NavbarBottom';
 import logo from '../Ui/images/logo/logo-toudeal-svg.svg';
 
 class NavbarContainer extends Component {
@@ -27,7 +28,7 @@ class NavbarContainer extends Component {
 							<div className="form-group">
 								<div className="input-group">
 									<div>
-										<input type="text" className="form-control input-xlg input-xlg-2" placeholder="Search our knowledgebase" />
+										<input type="text" className="form-control input-xlg input-xlg-2" placeholder="Rechercher un produit, une boutique ou autres..." />
 									</div>
 									<div className="input-group-btn">
 										<button type="submit" className="btn btn-primary btn-xlg">
@@ -39,33 +40,36 @@ class NavbarContainer extends Component {
 						</form>
 						<CardNavBarULWrapper className="nav navbar-nav navbar-right">
 							<CardBarNotificationWrapper BlockTitle="Message" IconClass="icon-bubbles4" TextCount={0}>
-								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}assets/images/placeholder.jpg`} ImageLabel={`Message Link`} UserFullName="Raphael Blehoue" BlockCount={5} TimeAgo={`04:58`} TextMessage={`who knows, maybe that would be the best thing for me`} />
-								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}assets/images/placeholder.jpg`} ImageLabel={`Message Link`} UserFullName="Raphael Blehoue" BlockCount={5} TimeAgo={`04:58`} TextMessage={`who knows, maybe that would be the best thing for me`} />
-								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}assets/images/placeholder.jpg`} ImageLabel={`Message Link`} UserFullName="Raphael Blehoue" BlockCount={5} TimeAgo={`04:58`} TextMessage={`who knows, maybe that would be the best thing for me`} />
-								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}assets/images/placeholder.jpg`} ImageLabel={`Message Link`} UserFullName="Raphael Blehoue" BlockCount={5} TimeAgo={`04:58`} TextMessage={`who knows, maybe that would be the best thing for me`} />
+								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}/assets/images/placeholder.jpg`} ImageLabel={`Message Link`} UserFullName="Raphael Blehoue" BlockCount={5} TimeAgo={`04:58`} TextMessage={`who knows, maybe that would be the best thing for me`} />
+								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}/assets/images/placeholder.jpg`} ImageLabel={`Message Link`} UserFullName="Raphael Blehoue" BlockCount={5} TimeAgo={`04:58`} TextMessage={`who knows, maybe that would be the best thing for me`} />
+								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}/assets/images/placeholder.jpg`} ImageLabel={`Message Link`} UserFullName="Raphael Blehoue" BlockCount={5} TimeAgo={`04:58`} TextMessage={`who knows, maybe that would be the best thing for me`} />
+								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}/assets/images/placeholder.jpg`} ImageLabel={`Message Link`} UserFullName="Raphael Blehoue" BlockCount={5} TimeAgo={`04:58`} TextMessage={`who knows, maybe that would be the best thing for me`} />
 							</CardBarNotificationWrapper>
 							<CardBarNotificationWrapper BlockTitle="Panier" IconClass="icon-cart5" TextCount={0}>
-								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}assets/images/placeholder.jpg`} ImageLabel={`Image product Link`} UserFullName="Product Name" BlockCount={5} />
-								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}assets/images/placeholder.jpg`} ImageLabel={`Image product Link`} UserFullName="Product Name" BlockCount={5} />
-								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}assets/images/placeholder.jpg`} ImageLabel={`Image product Link`} UserFullName="Product Name" BlockCount={5} />
-								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}assets/images/placeholder.jpg`} ImageLabel={`Image product Link`} UserFullName="Product Name" BlockCount={5} />
+								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}/assets/images/placeholder.jpg`} ImageLabel={`Image product Link`} UserFullName="Product Name" BlockCount={5} />
+								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}/assets/images/placeholder.jpg`} ImageLabel={`Image product Link`} UserFullName="Product Name" BlockCount={5} />
+								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}/assets/images/placeholder.jpg`} ImageLabel={`Image product Link`} UserFullName="Product Name" BlockCount={5} />
+								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}/assets/images/placeholder.jpg`} ImageLabel={`Image product Link`} UserFullName="Product Name" BlockCount={5} />
 							</CardBarNotificationWrapper>
 							<CardBarNotificationWrapper BlockTitle="Alerts" IconClass="icon-bell2" TextCount={5}>
-								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}assets/images/placeholder.jpg`} ImageLabel={`Notification Link`} UserFullName="Notification Name" BlockCount={4} />
-								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}assets/images/placeholder.jpg`} ImageLabel={`Notification Link`} UserFullName="Notification Name" BlockCount={2} />
-								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}assets/images/placeholder.jpg`} ImageLabel={`Notification Link`} UserFullName="Notification Name" BlockCount={3} />
-								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}assets/images/placeholder.jpg`} ImageLabel={`Notification Link`} UserFullName="Notification Name" BlockCount={1} />
+								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}/assets/images/placeholder.jpg`} ImageLabel={`Notification Link`} UserFullName="Notification Name" BlockCount={4} />
+								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}/assets/images/placeholder.jpg`} ImageLabel={`Notification Link`} UserFullName="Notification Name" BlockCount={2} />
+								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}/assets/images/placeholder.jpg`} ImageLabel={`Notification Link`} UserFullName="Notification Name" BlockCount={3} />
+								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}/assets/images/placeholder.jpg`} ImageLabel={`Notification Link`} UserFullName="Notification Name" BlockCount={1} />
 							</CardBarNotificationWrapper>
-							<CardBarUserProfilWrapper profilName="Raphael Blehoue" profilImg={`${process.env.PUBLIC_URL}assets/images/placeholder.jpg`}>
-								<TagNavLink NameLink="Gerer Mon compte" PathLink="/profile"/>
-								<TagNavLink NameLink="Gerer mes boutiques" PathLink="/stores"/>
+							<CardBarUserProfilWrapper profilName="Raphael Blehoue" profilImg={`${process.env.PUBLIC_URL}/assets/images/placeholder.jpg`}>
+								<TagNavLink NameLink="Gerer Mon compte" PathLink="/profile" />
+								<TagNavLink NameLink="Gerer mes boutiques" PathLink="/stores" />
 								<li className="divider" />
-								<TagNavLink NameLink="Mes commandes" PathLink="/orders"/>
-								<TagNavLink NameLink="Gerer mes services" PathLink="/services"/>
+								<TagNavLink NameLink="Mes commandes" PathLink="/orders" />
+								<TagNavLink NameLink="Gerer mes services" PathLink="/services" />
+								<li className="divider" />
+								<TagNavLink NameLink="Deconnecter mon compte" PathLink="/serviceslogout" />
 							</CardBarUserProfilWrapper>
 						</CardNavBarULWrapper>
 					</CardNavbarCollapseWrapper>
 				</CardNavBarBody>
+				<NavbarBottom />
 			</CardNavBarContentGroupLgWrapper>;
     }
 }

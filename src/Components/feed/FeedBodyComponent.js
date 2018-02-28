@@ -1,5 +1,4 @@
 import React from 'react';
-import CarouselComponent from '../CarouselAndSlides/CarouselComponent'
 import FeedProductComponent from './FeedProductComponent';
 
 
@@ -97,7 +96,7 @@ const FeedBodyComponent = () => (
 				</ul>
 			</div>
 		</div>
-		<CarouselComponent />
+		<div>Carousel</div>
 		<FeedProductComponent />
 		<FeedProductComponent />
 		<FeedProductComponent />

@@ -23,7 +23,7 @@ const styles = {
 };
 
 class PaginationDot extends Component {
-	handleClick = event => {
+	handleClick = (event) => {
 		this.props.onClick(event, this.props.index);
 	};
 

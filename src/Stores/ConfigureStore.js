@@ -9,7 +9,7 @@ import rootReducer from '../Reducers';
 
 
 
-export const history = createHistory();
+const history = createHistory();
 const composeEnhancers = composeWithDevTools({
 	shouldHotReload: false
 });
@@ -17,7 +17,9 @@ const composeEnhancers = composeWithDevTools({
 const middleware = composeEnhancers(applyMiddleware(promise(), routerMiddleware(history), logger, thunk));
 
 
-export function configureStore (initialState = {}) {
+function configureStore (initialState = {}) {
     const store = createStore(rootReducer, initialState, middleware);
     return store;
 }
+
+export { history, configureStore };

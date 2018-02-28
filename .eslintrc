@@ -51,7 +51,8 @@
             2,
             {
                 "components": [
-                    "Label"
+                    "Label",
+                    "InputDescriptor"
                 ],
                 "required": {
                     "every": [
