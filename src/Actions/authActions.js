@@ -1,10 +1,11 @@
+import { history } from '../Stores/ConfigureStore';
 import {
     SIGN_IN_USER_REQUEST,
     SIGN_IN_USER_FAILURE,
     SIGN_IN_USER_SUCCESS
 } from '../Constants';
 import { AuthParams, TOKEN_KEY } from '../Utils';
-import { getUserSucess, fetchUser } from "../Actions/userActions";
+import { getUserSucess } from "../Actions/userActions";
 import api from '../config';
 
 
@@ -31,14 +32,15 @@ export function SignInUserFailure(errors) {
 // User Sign In Action Event dispatch async Action
 
 export function SignInUser(credentials) {
-    return  async (dispatch) => {
+    return async (dispatch) => {
         dispatch(SignInUserRequest(credentials));
         try {
             const res = await api.auth.login(credentials);
             AuthParams.setToken(res.data.token, true);
             dispatch(SignInUserSuccess(res.data));
             dispatch(getUserSucess(res.data));
-            dispatch(fetchUser());
+            // history.replace("/feed");
+            history.push("/app/feed");
         } catch(error) {
             const token = AuthParams.getToken();
             if (token) {

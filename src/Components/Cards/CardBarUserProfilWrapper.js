@@ -17,7 +17,13 @@ const CardBarUserProfilWrapper = ({children, profilName, profilImg}) => (
 CardBarUserProfilWrapper.propTypes = {
 	children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
 	profilName: PropTypes.string.isRequired,
-	profilImg: PropTypes.number,
+	profilImg: PropTypes.string
+};
+
+CardBarUserProfilWrapper.defaultProps = {
+	children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+	profilName: PropTypes.string.isRequired,
+	profilImg:`${process.env.PUBLIC_URL}assets/images/placeholder.jpg`,
 };
 
 export default CardBarUserProfilWrapper;

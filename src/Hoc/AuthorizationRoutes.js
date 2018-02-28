@@ -1,48 +1,53 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import { withRouter } from 'react-router-dom';
 
 const AuthorizationRoutes = (WrapperComponent) => {
-        class WithAuthorizationRoutes extends Component {
-			componentWillMount() {
-                console.log('mount');
-				console.log('isAuth', this.props.isAuthenticated);
-			}
+    class WithAuthorizationRoutes extends Component {
 
-			componentWillReceiveProps(nextProps) {
-				console.log('nextProps', nextProps);
+		    static propTypes = {
+      			isAuthenticated: PropTypes.object.isRequired,
+				dispatch: PropTypes.func.isRequired				  
+			};
+			
+			componentWillMount() {
+				this.checkAndRedirect();
 			}
 
 			componentDidUpdate(prevProps) {
-				if (prevProps.location.pathname !== this.props.location.pathname) {
-					// Ajouter la verification du token (si existe) si different dispatch getUserFailure()
-					console.log('prevProps', prevProps.location.pathname);
-					console.log('currentProps', this.props.location.pathname);
+				if (prevProps.isAuthenticated !== this.props.isAuthenticated){
+					this.checkAndRedirect();
+				}
+			}
+
+			checkAndRedirect() {
+				const { dispatch } = this.props;
+				if (this.props.isAuthenticated === "UNAUTH") {
+					dispatch(push("/accounts/signIn"));
 				}
 			}
 
 			render() {
 				return (
-                    <div>
-						<WrapperComponent {...this.props} />
-                    </div>
-                );
+					<div className="authenticated">
+						{
+							this.props.isAuthenticated === "AUTH" 
+							? <WrapperComponent {...this.props} /> 
+							: null
+						}
+					</div>
+				);
 			}
 		}
 
-        WithAuthorizationRoutes.propTypes = {
-            isAuthenticated: PropTypes.string.isRequired,
-        };
-
-        const mapStateToProps = (state) => {
-            return {
-                isAuthenticated: state.user.isAuthenticated,
-                user: state.user,
-                location: state.router.location
-            }
-        }
-    return withRouter(connect(mapStateToProps)(WithAuthorizationRoutes))
+        const mapStateToProps = (state) => ({
+            isAuthenticated: state.user.isAuthenticated,
+			user: state.user		
+		})
+		
+    return withRouter(connect(mapStateToProps)(WithAuthorizationRoutes));
 }
 
 export default AuthorizationRoutes;

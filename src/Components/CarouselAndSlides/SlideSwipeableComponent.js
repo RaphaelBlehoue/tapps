@@ -33,7 +33,7 @@ class SlideSwipeableComponent  extends Component {
         index: 0
     };
 
-    handleChangeIndex = index => {
+    handleChangeIndex = (index) => {
         this.setState({
             index    
         });

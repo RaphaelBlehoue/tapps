@@ -2,25 +2,21 @@ import React from 'react';
 import { ConnectedRouter } from 'react-router-redux';
 import { Route, Switch } from 'react-router-dom';
 import { history } from './Stores/ConfigureStore';
-import { HocLoading, AuthorizationRoutes, NoUserLoggedAccess } from './Hoc';
-import NotFoundPage from './Containers/NotFoundPage';
-import userFeedContainer from './Containers/feed/userFeedContainer';
-import ProfileContainer from './Containers/Security/ProfileContainer';
-import SignInFormContainer from './Containers/Security/SignInFormContainer';
-import SignUpFormContainer from './Containers/Security/SignUpFormContainer';
+import { HocLoading, AuthorizationRoutes, NoAccesForUserLogged } from './Hoc';
+import SecurityContainerPages from './Containers/Layouts/SecurityContainerPages';
+import FrontAppContainerPages from './Containers/Layouts/FrontAppContainerPages';
 import Home from './Containers/Home';
+
+/** Retirer la proprieté exact des routes organiser comme SecurityContainerPages  */
 
 const App = () => (
 	<ConnectedRouter history={history}>
 		<div>
 			<HocLoading>
 				<Switch>
-					<Route path="/accounts/signIn" exact component={NoUserLoggedAccess(SignInFormContainer)} />
-					<Route path="/accounts/signUp" exact component={NoUserLoggedAccess(SignUpFormContainer)} />
-					<Route path="/feed" exact component={AuthorizationRoutes(userFeedContainer)} />
-					<Route path="/profile" exact component={AuthorizationRoutes(ProfileContainer)} />
+					<Route path="/accounts" component={NoAccesForUserLogged(SecurityContainerPages)} />
+					<Route path="/app" component={AuthorizationRoutes(FrontAppContainerPages)} />
 					<Route exact path="/" component={Home} />
-					<Route path="*" exact component={NotFoundPage} />
 				</Switch>
 			</HocLoading>
 		</div>

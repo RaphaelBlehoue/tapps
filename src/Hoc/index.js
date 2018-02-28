@@ -1,9 +1,9 @@
 import HocLoading from './HocLoading';
 import AuthorizationRoutes from './AuthorizationRoutes';
-import NoUserLoggedAccess from './NoUserLoggedAccess';
+import NoAccesForUserLogged from './NoAccesForUserLogged';
 
 export {
   HocLoading,
   AuthorizationRoutes,
-  NoUserLoggedAccess
+  NoAccesForUserLogged
 }

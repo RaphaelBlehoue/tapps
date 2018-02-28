@@ -1,16 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Spinner } from '../Components';
 import { fetchUser } from '../Actions/userActions';
 
-class HocLoading extends Component {
+
+class HocLoading extends React.Component {
 
     componentWillMount() {
-        const { isAuthenticated } = this.props;
-        if (isAuthenticated === 'AWAIT'){
+        const { user } = this.props;
+        if (!user.infoUser){
             this.props.fetchUser();
         }
+        console.log('isMount');
     }
 
     componentDidUpdate(prevProps) {
@@ -42,14 +45,16 @@ HocLoading.propTypes = {
     ]).isRequired,
     fetchUser: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.string.isRequired,
+    location : PropTypes.shape({
+        pathname: PropTypes.string.isRequired
+    }).isRequired,
+    user: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state) => {
-	return {
+const mapStateToProps = (state) => ({
 		isAuthenticated: state.user.isAuthenticated,
 		user: state.user,
         location: state.router.location
-	};
-};
+	});
 
-export default connect(mapStateToProps, { fetchUser })(HocLoading);
+export default withRouter(connect(mapStateToProps, { fetchUser })(HocLoading));
