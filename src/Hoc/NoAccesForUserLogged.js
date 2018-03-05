@@ -8,7 +8,7 @@ const NoAccesForUserLogged = (WrapperComponent) => {
         class WithNoAccesForUserLogged extends Component {
 
 		    static propTypes = {
-      			isAuthenticated: PropTypes.object.isRequired,
+      			isAuthenticated: PropTypes.string.isRequired,
 				dispatch: PropTypes.func.isRequired				  
 			};
 

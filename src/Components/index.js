@@ -1,4 +1,4 @@
-import Spinner from './Spinner';
+import Loading from './Loading';
 import CardBarNotificationWrapper from './Cards/CardBarNotificationWrapper'
 import CardContainer from './Cards/CardContainer';
 import CardBarNotificationContent from './Cards/CardBarNotificationContent';
@@ -9,6 +9,7 @@ import CardNavbarCollapseWrapper from './NavBars/CardNavbarCollapseWrapper';
 import SearchField from './Forms/SearchField';
 import CardNavBarULWrapper from './NavBars/CardNavBarULWrapper';
 import renderField from './Forms/renderField';
+import renderPhoneField from './Forms/renderPhoneField';
 import CardBarUserProfilWrapper from './Cards/CardBarUserProfilWrapper';
 import TagNavLink from './Nav/TagNavLink';
 import SlideSwipeableComponent from './CarouselAndSlides/SlideSwipeableComponent';
@@ -17,7 +18,7 @@ import SecondSideBarComponent from './Sidebars/SecondSideBarComponent';
 import Footer from './Footer';
 
 export {
-	Spinner,
+	Loading,
 	CardBarNotificationWrapper,
 	CardBarNotificationContent,
 	CardNavBarContentGroupLgWrapper,
@@ -28,6 +29,7 @@ export {
 	CardNavBarULWrapper,
 	CardBarUserProfilWrapper,
 	renderField,
+	renderPhoneField,
 	TagNavLink,
 	CardContainer,
 	SlideSwipeableComponent,

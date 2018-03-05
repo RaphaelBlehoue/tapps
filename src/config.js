@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { AuthParams } from './Utils';
 
-const API_URL = process.env.NODE_ENV === 'production' ? 'http://api.toudeal.com/api' : 'http://toudeal-api.test/api';
+const API_URL = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_PROD_API : process.env.REACT_APP_DEV_API;
 
 const token = AuthParams.getToken();
 if (token) {

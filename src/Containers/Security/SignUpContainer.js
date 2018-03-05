@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import $ from 'jquery/dist/jquery.min';
 import '../../Ui/login.css';
 import logo from '../../Ui/images/logo_origin.png';
-import { renderField } from '../../Components/';
+import { renderPhoneField, Loading } from '../../Components/';
 import {SignUpUser} from '../../Actions/authActions';
 
 // Client-side validation informations
@@ -39,46 +39,37 @@ class SignUpContainer extends Component {
 
 	render() {
 		const { handleSubmit, submitting } = this.props;
-		return (
-			<form onSubmit={handleSubmit(this.handleFormSignUpAndValidate)}>
-				<div className="panel panel-body login-form">
-					<div className="text-center">
-						<div>
-							<img src={logo} alt="Toudeal Authentification" />
-						</div>
-						<h5 className="content-group-lg display-block pt-10">
-							Connectez-vous à votre compte
-						</h5>
-					</div>
-					<Field name="username" label="Entrez adresse Email (obligatoire)" placeholder="Entrez votre email..." type="text" component={renderField} />
-					<Field name="password" label="Mot de passe (obligatoire)" type="password" component={renderField} placeholder="Mot de passe" />
-					<div className="form-group">
-						<div className="row">
-							<div className="col-sm-8 text-right col-xs-offset-4">
-								<a>Mot de passe oublié ?</a>
+		return <div>
+				{submitting && <Loading />}
+				<form onSubmit={handleSubmit(this.handleFormSignUpAndValidate)}>
+					<div className="panel panel-body login-form">
+						<div className="text-center">
+							<div>
+								<img src={logo} alt="Toudeal Authentification" />
 							</div>
+							<h3 className="content-group-lg display-block pt-10">Créer votre compte Toudeal</h3>
 						</div>
+						<Field name="phone" label="Phone" placeholder="Numero de téléphone" type="phone" component={renderPhoneField} />
+						<div className="form-group">
+							<button type="submit" className="btn bg-blue btn-block btn-xlg" disabled={submitting}>
+								Créer un nouveau compte
+							</button>
+						</div>
+						<div className="content-divider text-muted form-group">
+							<span className="no-margin text-semibold">{`Vous n'avez pas de compte?`}</span>
+						</div>
+						<Link to="/accounts/signIn" className="btn text-orange-800 border-orange btn-flat btn-xlg btn-block content-group">
+							Se Connecter
+						</Link>
+						<span className="help-block text-center no-margin">
+							{"By continuing, you're confirming that you've read our"} <a>
+								{' '}
+								{'Terms & Conditions'}
+							</a> and <a>Cookie Policy</a>
+						</span>
 					</div>
-					<div className="form-group">
-						<button type="submit" className="btn bg-blue btn-block btn-xlg" disabled={submitting}>
-							Créer un nouveau compte
-						</button>
-					</div>
-					<div className="content-divider text-muted form-group">
-						<span className="no-margin text-semibold">{`Vous n'avez pas de compte?`}</span>
-					</div>
-					<Link to="/accounts/signIn" className="btn text-orange-800 border-orange btn-flat btn-xlg btn-block content-group">
-						Se Connecter
-					</Link>
-					<span className="help-block text-center no-margin">
-						{"By continuing, you're confirming that you've read our"} <a>
-							{' '}
-							{'Terms & Conditions'}
-						</a> and <a>Cookie Policy</a>
-					</span>
-				</div>
-			</form>
-		);
+				</form>
+			</div>;
 	}
 }
 

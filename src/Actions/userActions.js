@@ -29,11 +29,9 @@ export function fetchUser(){
             const res = await api.user.fetch();
             dispatch(getUserSucess(res.data));
         } catch(error){
-            const token = AuthParams.getToken();
-			if (token) {
-				AuthParams.remove(TOKEN_KEY);
-			}
             dispatch(getUserFailure());
+            const token = AuthParams.getToken();
+			if (token) AuthParams.remove(TOKEN_KEY);            
         }
     }
 }

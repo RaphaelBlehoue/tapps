@@ -39,14 +39,11 @@ export function SignInUser(credentials) {
             AuthParams.setToken(res.data.token, true);
             dispatch(SignInUserSuccess(res.data));
             dispatch(getUserSucess(res.data));
-            // history.replace("/feed");
             history.push("/app/feed");
         } catch(error) {
-            const token = AuthParams.getToken();
-            if (token) {
-                AuthParams.remove(TOKEN_KEY)
-            }
             dispatch(SignInUserFailure(error.response.data));
+            const token = AuthParams.getToken();
+            if (token) AuthParams.remove(TOKEN_KEY)
         }
     };
 }

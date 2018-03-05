@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { withRouter } from 'react-router-dom';
 
+
 const AuthorizationRoutes = (WrapperComponent) => {
     class WithAuthorizationRoutes extends Component {
 
 		    static propTypes = {
-      			isAuthenticated: PropTypes.object.isRequired,
+      			isAuthenticated: PropTypes.string.isRequired,
 				dispatch: PropTypes.func.isRequired				  
 			};
 			

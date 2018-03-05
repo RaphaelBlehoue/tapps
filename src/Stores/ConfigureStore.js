@@ -11,7 +11,7 @@ import rootReducer from '../Reducers';
 
 const history = createHistory();
 const composeEnhancers = composeWithDevTools({
-	shouldHotReload: false
+	shouldHotReload: true
 });
 
 const middleware = composeEnhancers(applyMiddleware(promise(), routerMiddleware(history), logger, thunk));
