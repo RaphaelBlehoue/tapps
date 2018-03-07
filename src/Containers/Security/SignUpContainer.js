@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Field , reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
-import _ from 'lodash';
+import {isEmail} from 'validator';
 import $ from 'jquery/dist/jquery.min';
 import '../../Ui/login.css';
 import logo from '../../Ui/images/logo_origin.png';
@@ -14,8 +14,11 @@ import {SignUpUser} from '../../Actions/authActions';
 // Client-side validation informations
 const validate = (data) => {
     const errors = {};
-    if(!data.username) errors.username = "Entrez votre email pour vous connecter";
 	if(!data.password) errors.password = "Le Mot de passe ne doit pas etre vide";
+	if(!data.email) errors.email = "Entrez une adresse email pour continuer";
+	if(isEmail(data.email)) errors.email = "Adresse Email invalide";
+	if(!data.phone) errors.phone = "Entrez votre numero de téléphone pour continuer";
+	if(!data.countries) errors.countries = "Faites le choix de l'indicatif pays";
 	// if (isValidPhoneNumber(!data.username)) errors.username = 'This field must be a valid phone number';
     return errors;
 };
@@ -23,6 +26,11 @@ const validate = (data) => {
 
 
 class SignUpContainer extends Component {
+
+	constructor(props) {
+		super(props);
+		this.handleFormSignUpAndValidate = this.handleFormSignUpAndValidate.bind(this);
+	}
 
 	componentWillMount() {
 		const body = $('body');
@@ -42,9 +50,10 @@ class SignUpContainer extends Component {
 		const { handleSubmit, submitting } = this.props;
 		const mapped = CallingCodes.map((s) => ({
 				...s,
-				info: `(${s.value}) - ${s.country} `,
-			}));
-		return <div>
+				info:`(${s.value}) - ${s.country}`,
+		}));
+		return (
+			<div>
 				{submitting && <Loading />}
 				<form onSubmit={handleSubmit(this.handleFormSignUpAndValidate)}>
 					<div className="panel panel-body login-form">
@@ -54,13 +63,13 @@ class SignUpContainer extends Component {
 							</div>
 							<h3 className="content-group-lg display-block pt-10">Créer votre compte Toudeal</h3>
 						</div>
-						<Field name="countries" label="Indicatif pays" component={renderReactSelect} options={mapped} labelKey="info" valueKey="value" valueRenderer={(country) => `${country.country} (${country.value})`} />
-						<Field name="phone" label="Votre numero de téléphone" placeholder="Entrez votre téléphone..." type="text" component={renderField} />
-						<Field name="username" label="Entrez adresse Email (obligatoire)" placeholder="Entrez votre email..." type="email" component={renderField} />
-						<Field name="password" label="Mot de passe (obligatoire)" type="password" placeholder="Mot de passe" component={renderField} />
+						<Field name="countries" label="Selectionnez l'indicatif de votre pays" placeholder="Selectionnez l'indicatif pays" component={renderReactSelect} options={mapped} labelKey="info" valueKey="value" valueRenderer={(country) => `${country.country} (${country.value})`} />
+						<Field name="phone" label="Entrez votre numero de téléphone" placeholder="Entrez votre téléphone..." type="text" component={renderField} />
+						<Field name="email" label="Entrez une adresse Email (obligatoire)" placeholder="Entrez votre email..." type="email" component={renderField} />
+						<Field name="password" label="Entrez un Mot de passe (obligatoire)" type="password" placeholder="Mot de passe" component={renderField} />
 						<div className="form-group">
 							<button type="submit" className="btn bg-blue btn-block btn-xlg" disabled={submitting}>
-								Créer un nouveau compte
+								{!submitting ? 'Créer un nouveau compte' : 'Loading...'}
 							</button>
 						</div>
 						<div className="content-divider text-muted form-group">
@@ -77,7 +86,8 @@ class SignUpContainer extends Component {
 						</span>
 					</div>
 				</form>
-			</div>;
+			</div>
+		);
 	}
 }
 
@@ -93,6 +103,7 @@ SignUpContainer.defaultProps = {
 
 const reduxFormSignup = reduxForm({
 	form: 'SignUpValidation',
+	validate
 })(SignUpContainer);
 
 export default connect(null, { SignUpUser })(reduxFormSignup);

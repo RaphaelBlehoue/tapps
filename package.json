@@ -41,7 +41,8 @@
     "redux-promise-middleware": "^5.0.0",
     "redux-thunk": "^2.2.0",
     "select2": "^4.0.3",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "validator": "^9.4.1"
   },
   "scripts": {
     "start": "react-scripts start",

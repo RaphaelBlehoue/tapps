@@ -18,13 +18,17 @@ const renderReactSelect = (props) => (
 );
 
 renderReactSelect.propTypes = {
-	labelKey: PropTypes.string.isRequired,
+	label: PropTypes.string.isRequired,
 	input: PropTypes.shape({
 		onChange: PropTypes.func.isRequired,
 		onBlur: PropTypes.func.isRequired,
 		value: PropTypes.string.isRequired,
 	}).isRequired,
 	options: PropTypes.object.isRequired,
+	error: PropTypes.any,
+	touched: PropTypes.any,
+	warning: PropTypes.any,
+	invalid: PropTypes.any
 };
 
 renderReactSelect.defaultProps = {
