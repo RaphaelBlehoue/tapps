@@ -9,7 +9,8 @@ import CardNavbarCollapseWrapper from './NavBars/CardNavbarCollapseWrapper';
 import SearchField from './Forms/SearchField';
 import CardNavBarULWrapper from './NavBars/CardNavBarULWrapper';
 import renderField from './Forms/renderField';
-import renderPhoneField from './Forms/renderPhoneField';
+import renderSelect from './Forms/renderSelect';
+import renderReactSelect from './Forms/renderReactSelect';
 import CardBarUserProfilWrapper from './Cards/CardBarUserProfilWrapper';
 import TagNavLink from './Nav/TagNavLink';
 import SlideSwipeableComponent from './CarouselAndSlides/SlideSwipeableComponent';
@@ -29,7 +30,8 @@ export {
 	CardNavBarULWrapper,
 	CardBarUserProfilWrapper,
 	renderField,
-	renderPhoneField,
+	renderSelect,
+	renderReactSelect,
 	TagNavLink,
 	CardContainer,
 	SlideSwipeableComponent,
