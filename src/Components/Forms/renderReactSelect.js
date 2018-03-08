@@ -11,7 +11,7 @@ const renderReactSelect = (props) => (
 			value={props.input.value}
 			onChange={(value) => props.input.onChange(value)}
 			onBlur={() => props.input.onBlur(props.input.value)}
-            options={props.options}
+			options={props.options}
         />
         {props.touched && ((props.error && <span className="help-block">{props.error}</span>) || (props.warning && <span className="help-block">{props.warning}</span>))}
 	</div>
@@ -22,13 +22,13 @@ renderReactSelect.propTypes = {
 	input: PropTypes.shape({
 		onChange: PropTypes.func.isRequired,
 		onBlur: PropTypes.func.isRequired,
-		value: PropTypes.string.isRequired,
+		value: PropTypes.any.isRequired,
 	}).isRequired,
-	options: PropTypes.object.isRequired,
+	options: PropTypes.array.isRequired,
 	error: PropTypes.any,
 	touched: PropTypes.any,
 	warning: PropTypes.any,
-	invalid: PropTypes.any
+	invalid: PropTypes.any,
 };
 
 renderReactSelect.defaultProps = {
