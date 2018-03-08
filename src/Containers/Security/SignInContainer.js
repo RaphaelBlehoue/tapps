@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import $ from 'jquery/dist/jquery.min';
 import '../../Ui/login.css';
 import logo from '../../Ui/images/logo_origin.png';
-import {renderField } from '../../Components/';
+import {renderField, Loading } from '../../Components/';
 import { SignInUser } from '../../Actions/authActions';
 
 
@@ -36,45 +36,48 @@ class SignInContainer extends Component {
 	render() {
 		const { handleSubmit, submitting, isError, errors } = this.props;
 		return (
-			<form onSubmit={handleSubmit(this.handleFormSignInAndValidate)}>
-				<div className="panel panel-body login-form">
-					<div className="text-center">
-						<div>
-							<img src={logo} alt="Toudeal Authentification" />
+			<div>
+				{ submitting && <Loading/>}
+				<form onSubmit={handleSubmit(this.handleFormSignInAndValidate)}>
+					<div className="panel panel-body login-form">
+						<div className="text-center">
+							<div>
+								<img src={logo} alt="Toudeal Authentification" />
+							</div>
+							<h3 className="content-group-lg display-block pt-10">
+								Connectez-vous à votre compte
+							</h3>
 						</div>
-						<h5 className="content-group-lg display-block pt-10">
-							Connectez-vous à votre compte
-						</h5>
-					</div>
-					{ isError && <div className="alert alert-danger no-border">{errors}</div> }
-					<Field name="username" label="Entrez adresse Email (obligatoire)" placeholder="Entrez votre email..." type="text" component={renderField} />
-					<Field name="password" label="Mot de passe (obligatoire)" type="password" placeholder="Mot de passe" component={renderField} />
-					<div className="form-group">
-						<div className="row">
-							<div className="col-sm-8 text-right col-xs-offset-4">
-								<a>Mot de passe oublié ?</a>
+						{ isError && <div className="alert alert-danger no-border">{errors}</div> }
+						<Field name="username" label="Entrez adresse Email (obligatoire)" placeholder="Entrez votre email..." type="text" component={renderField} />
+						<Field name="password" label="Mot de passe (obligatoire)" type="password" placeholder="Mot de passe" component={renderField} />
+						<div className="form-group">
+							<div className="row">
+								<div className="col-sm-8 text-right col-xs-offset-4">
+									<a>Mot de passe oublié ?</a>
+								</div>
 							</div>
 						</div>
+						<div className="form-group">
+							<button type="submit" className="btn bg-blue btn-block btn-xlg" disabled={submitting}>
+								Se Connecter
+							</button>
+						</div>
+						<div className="content-divider text-muted form-group">
+							<span className="no-margin text-semibold">{`Vous n'avez pas de compte?`}</span>
+						</div>
+						<Link to="/accounts/signUp"  className="btn text-orange-800 border-orange btn-flat btn-xlg btn-block content-group">
+							Créer un nouveau compte
+						</Link>
+						<span className="help-block text-center no-margin">
+							{`By continuing, youre confirming that you've read our`} <a>{`Terms & Conditions`}</a> and <a
+							>
+								Cookie Policy
+							</a>
+						</span>
 					</div>
-					<div className="form-group">
-						<button type="submit" className="btn bg-blue btn-block btn-xlg" disabled={submitting}>
-							Se Connecter
-						</button>
-					</div>
-					<div className="content-divider text-muted form-group">
-						<span className="no-margin text-semibold">{`Vous n'avez pas de compte?`}</span>
-					</div>
-					<Link to="/accounts/signUp" className="btn text-orange-800 border-orange btn-flat btn-xlg btn-block content-group">
-						Créer un nouveau compte
-					</Link>
-					<span className="help-block text-center no-margin">
-						{`By continuing, youre confirming that you've read our`} <a>{`Terms & Conditions`}</a> and <a
-						>
-							Cookie Policy
-						</a>
-					</span>
-				</div>
-			</form>
+				</form>			
+			</div>
 		);
 	}
 }

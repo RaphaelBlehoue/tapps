@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
     CardNavBarContentGroupLgWrapper,
     CardNavBarLeft,
@@ -20,7 +21,9 @@ class NavbarContainer extends Component {
     }
 
     render() {
-        return <CardNavBarContentGroupLgWrapper>
+		const { user } = this.props;
+        return (
+			<CardNavBarContentGroupLgWrapper>
 				<CardNavBarBody className="navbar navbar-inverse p-5">
 					<CardNavBarLeft logo={logo} AltTitle="Toudeal MarketPlace" />
 					<CardNavbarCollapseWrapper className="navbar-collapse collapse" id="navbar-form-inputs">
@@ -58,20 +61,26 @@ class NavbarContainer extends Component {
 								<CardBarNotificationContent ImageLink={`${process.env.PUBLIC_URL}/assets/images/placeholder.jpg`} ImageLabel={`Notification Link`} UserFullName="Notification Name" BlockCount={1} />
 							</CardBarNotificationWrapper>
 							<CardBarUserProfilWrapper profilName="Raphael Blehoue" profilImg={`${process.env.PUBLIC_URL}/assets/images/placeholder.jpg`}>
-								<TagNavLink NameLink="Gerer Mon compte" PathLink="/profile" />
+								<TagNavLink NameLink="Gerer Mon compte" PathLink="/app/profile" />
 								<TagNavLink NameLink="Gerer mes boutiques" PathLink="/stores" />
 								<li className="divider" />
 								<TagNavLink NameLink="Mes commandes" PathLink="/orders" />
 								<TagNavLink NameLink="Gerer mes services" PathLink="/services" />
 								<li className="divider" />
+								{user.infoUser.slug}
 								<TagNavLink NameLink="Deconnecter mon compte" PathLink="/serviceslogout" />
 							</CardBarUserProfilWrapper>
 						</CardNavBarULWrapper>
 					</CardNavbarCollapseWrapper>
 				</CardNavBarBody>
 				<NavbarBottom />
-			</CardNavBarContentGroupLgWrapper>;
+			</CardNavBarContentGroupLgWrapper>
+		);
     }
 }
 
-export default NavbarContainer;
+const mapStateToProps = (state) => ({
+	user: state.user
+});
+
+export default connect(mapStateToProps)(NavbarContainer)

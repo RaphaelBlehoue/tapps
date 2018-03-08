@@ -9,15 +9,15 @@ import { userFeedContainer, ProfileContainer } from '../Apps'
 /** la redirection vers match.url correspont à une page de redirection par defaut si
  * aucune url ou path ne correspont
  */
-const FrontAppContainerPages = ({match}) => (
+const FrontAppContainerPages = ({ match }) => (
 	<div>
 		<NavbarContainer />
-			<Switch>
-				<Route path={`${match.path}/feed`} exact component={userFeedContainer}/>
-				<Route path={`${match.path}/user/:slug}`} exact component={ProfileContainer} />				
-				<Redirect to={`${match.url}`}/>
-			</Switch>
-		<Footer/>
+		<Switch>
+			<Route path={`${match.path}/profile}`} exact component={ProfileContainer}/>
+			<Route path={`${match.path}/feed`} exact component={userFeedContainer}/>
+			<Redirect to={`${match.url}`} />
+		</Switch>
+		<Footer />
 	</div>
 );
 

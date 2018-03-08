@@ -4242,7 +4242,7 @@ a.editable-empty:focus {
   content: '\ed63';
 }
 .alpaca-icon-required {
-  font-family: "Roboto", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
   float: right;
   margin-right: 0;
   margin-left: 5px;
@@ -20505,3 +20505,4 @@ label.display-block {
     padding-bottom: 10px;
   }
 }
+/*# sourceMappingURL=components.css.map */
