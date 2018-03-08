@@ -1,5 +1,5 @@
-import normalizePhone from './normalizePhone';
+import FormatPhoneNumber from './FormatPhoneNumber';
 
 export {
-    normalizePhone
+    FormatPhoneNumber
 };
