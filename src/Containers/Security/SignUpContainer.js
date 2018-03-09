@@ -99,6 +99,19 @@ const validate = (data) => {
 		return errors;
 };
 
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+
+const asyncValidate = (values) => (
+    sleep(1000).then(() => {
+		const errors = {};
+    if (['john', 'paul', 'george', 'ringo'].includes(values.phone)) {
+      	errors.phone = "invalid phone";
+    }
+		return errors;
+  })
+);
+
 
 SignUpContainer.propTypes = {
 	handleSubmit: PropTypes.func,
@@ -115,6 +128,8 @@ SignUpContainer.defaultProps = {
 const reduxFormSignup = reduxForm({
 	form: 'SignUpValidation',
 	validate,
+	asyncValidate,
+	asyncBlurFields: ['phone']
 })(SignUpContainer);
 
 export default connect(null, { SignUpUser })(reduxFormSignup);
