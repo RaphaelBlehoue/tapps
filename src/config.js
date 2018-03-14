@@ -22,5 +22,7 @@ export default {
 	},
 	user: {
 		fetch: () => axios.get(`${API_URL}/user/logged`, options),
+		check: (field, params) => axios.get(`${API_URL}/accounts/check/${field}/${params}`),
+		register: (data) => axios.post(`${API_URL}/accounts/signin`, data),
 	},
 };

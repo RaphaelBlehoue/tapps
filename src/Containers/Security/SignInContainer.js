@@ -7,7 +7,7 @@ import $ from 'jquery/dist/jquery.min';
 import '../../Ui/login.css';
 import logo from '../../Ui/images/logo_origin.png';
 import {renderField, Loading } from '../../Components/';
-import { SignInUser } from '../../Actions/authActions';
+import { SignIn } from '../../Actions/authActions';
 
 
 class SignInContainer extends Component {
@@ -26,15 +26,15 @@ class SignInContainer extends Component {
 		const body = $('body');
 		body.addClass('login-container login-cover');
 	}
-	
+
 
 
 	handleFormSignInAndValidate = (values) => {
-		this.props.SignInUser(values);
+		  this.props.SignIn(values);
 	};
 
 	render() {
-		const { handleSubmit, submitting, isError, errors } = this.props;
+		const { handleSubmit, submitting, submitSucceeded, isError, errors } = this.props;
 		return (
 			<div>
 				{ submitting && <Loading/>}
@@ -59,8 +59,8 @@ class SignInContainer extends Component {
 							</div>
 						</div>
 						<div className="form-group">
-							<button type="submit" className="btn bg-blue btn-block btn-xlg" disabled={submitting}>
-								Se Connecter
+							<button type="submit" className="btn bg-blue btn-block btn-xlg" disabled={submitting || submitSucceeded}>
+								{submitSucceeded ? <i className="icon-spinner2 spinner"/> : 'Se Connecter' }
 							</button>
 						</div>
 						<div className="content-divider text-muted form-group">
@@ -76,7 +76,7 @@ class SignInContainer extends Component {
 							</a>
 						</span>
 					</div>
-				</form>			
+				</form>
 			</div>
 		);
 	}
@@ -87,8 +87,7 @@ class SignInContainer extends Component {
 const validate = (data) => {
     const errors = {};
     if(!data.username) errors.username = "Entrez votre email pour vous connecter";
-	if(!data.password) errors.password = "Le Mot de passe ne doit pas etre vide";
-	// if (isValidPhoneNumber(!data.username)) errors.username = 'This field must be a valid phone number';
+		if(!data.password) errors.password = "Le Mot de passe ne doit pas etre vide";
     return errors;
 };
 
@@ -96,12 +95,13 @@ const validate = (data) => {
 const mapStateToProps = (state) => ({
 		errors: state.auth.error,
 		isError: state.auth.errorStatus
-	})
+});
 
 SignInContainer.propTypes = {
 	handleSubmit: PropTypes.func.isRequired,
 	submitting: PropTypes.bool.isRequired,
-	SignInUser: PropTypes.func.isRequired,
+	SignIn: PropTypes.func.isRequired,
+	submitSucceeded: PropTypes.bool.isRequired,
 	isError: PropTypes.bool,
 	errors: PropTypes.string
 };
@@ -121,4 +121,4 @@ const reduxFormSignin = reduxForm({
 	validate,
 })(SignInContainer);
 
-export default connect(mapStateToProps, { SignInUser })(reduxFormSignin);
+export default connect(mapStateToProps, { SignIn })(reduxFormSignin);
