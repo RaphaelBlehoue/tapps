@@ -2,16 +2,15 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Field , reduxForm } from 'redux-form';
+import { isValidNumber } from 'libphonenumber-js';
 import { Link } from 'react-router-dom';
 import $ from 'jquery/dist/jquery.min';
-import { renderReactSelect, renderField, Loading } from '../../Components';
-import { isValidNumber } from 'libphonenumber-js';
+import { renderReactSelect, renderField } from '../../Components';
 import { FormatPhoneNumber }  from '../../Validations';
 import CallingCodes from '../../Data/CallingCodes';
-import { SignUpUser } from '../../Actions/authActions';
+import { SignUp } from '../../Actions/authActions';
 import logo from '../../Ui/images/logo_origin.png';
 import '../../Ui/login.css';
-
 
 class SignUpContainer extends Component {
 
@@ -31,17 +30,20 @@ class SignUpContainer extends Component {
 	}
 
 	handleFormSignUpAndValidate = (data) => {
-			console.log(data);
+			const values = {
+				 'phone': FormatPhoneNumber(data),
+				 'email': data.email,
+				 'password': data.password
+			};
+			return this.props.SignUp(values);
 	};
 
-
 	render() {
-		const { handleSubmit, submitting, pristine } = this.props;
+		const {error, isError, errors, handleSubmit, submitting, pristine } = this.props;
 		const mapped = CallingCodes.map((s) => ({...s, info:`(${s.value}) - ${s.country}`}));
 		return (
 			<div>
-				{ submitting && <Loading />}
-				<form onSubmit={handleSubmit(this.handleFormSignUpAndValidate)}>
+					<form onSubmit={handleSubmit(this.handleFormSignUpAndValidate)}>
 					<div className="panel panel-body login-form">
 						<div className="text-center">
 							<div>
@@ -49,6 +51,7 @@ class SignUpContainer extends Component {
 							</div>
 							<h3 className="content-group-lg display-block pt-10">Créer votre compte Toudeal</h3>
 						</div>
+						{ isError && <strong> {errors && errors.message} </strong>}
 						<Field
 							name="countries"
 							label="Selectionnez l'indicatif de votre pays"
@@ -64,7 +67,7 @@ class SignUpContainer extends Component {
 						<Field name="password" label="Entrez un Mot de passe (obligatoire)" type="password" placeholder="Mot de passe" component={renderField} />
 						<div className="form-group">
 							<button type="submit" className="btn bg-blue btn-block btn-xlg" disabled={ pristine || submitting}>
-								{ !submitting ? 'Créer un nouveau compte' : 'Loading...'}
+								{submitting ? <i className="icon-spinner2 spinner"/> : 'Créer un nouveau compte' }
 							</button>
 						</div>
 						<div className="content-divider text-muted form-group">
@@ -99,37 +102,32 @@ const validate = (data) => {
 		return errors;
 };
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-
-const asyncValidate = (values) => (
-    sleep(1000).then(() => {
-		const errors = {};
-    if (['john', 'paul', 'george', 'ringo'].includes(values.phone)) {
-      	errors.phone = "invalid phone";
-    }
-		return errors;
-  })
-);
-
 
 SignUpContainer.propTypes = {
 	handleSubmit: PropTypes.func,
 	submitting: PropTypes.bool,
-	pristine: PropTypes.bool
+	pristine: PropTypes.bool,
+	error: PropTypes.any,
+	isError: PropTypes.bool,
+	errors: PropTypes.any,
+	SignUp: PropTypes.func.isRequired
 };
 
 SignUpContainer.defaultProps = {
 	handleSubmit: PropTypes.func,
 	submitting: PropTypes.bool,
-	pristine: PropTypes.bool
+	pristine: PropTypes.bool,
+	error: PropTypes.any
 };
+
+const mapStateToProps = (state) => ({
+		errors: state.sign.error,
+		isError: state.sign.errorStatus
+});
 
 const reduxFormSignup = reduxForm({
 	form: 'SignUpValidation',
-	validate,
-	asyncValidate,
-	asyncBlurFields: ['phone']
+	validate
 })(SignUpContainer);
 
-export default connect(null, { SignUpUser })(reduxFormSignup);
+export default connect(mapStateToProps, { SignUp })(reduxFormSignup);

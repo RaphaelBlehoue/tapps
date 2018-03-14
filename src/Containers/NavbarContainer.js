@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
     CardNavBarContentGroupLgWrapper,
     CardNavBarLeft,
@@ -9,7 +10,7 @@ import {
     CardBarNotificationContent,
     CardBarNotificationWrapper,
 	CardBarUserProfilWrapper,
-	TagNavLink 
+	TagNavLink
 } from '../Components';
 import NavbarBottom from '../Components/NavBars/NavbarBottom';
 import logo from '../Ui/images/logo/logo-toudeal-svg.svg';
@@ -77,6 +78,10 @@ class NavbarContainer extends Component {
 			</CardNavBarContentGroupLgWrapper>
 		);
     }
+}
+
+NavbarContainer.propTypes = {
+    user: PropTypes.object
 }
 
 const mapStateToProps = (state) => ({
