@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import $ from 'jquery/dist/jquery.min';
 import '../../Ui/login.css';
 import logo from '../../Ui/images/logo_origin.png';
-import {renderField, Loading } from '../../Components/';
+import {renderField } from '../../Components/';
 import { SignIn } from '../../Actions/authActions';
 
 
@@ -34,10 +34,9 @@ class SignInContainer extends Component {
 	};
 
 	render() {
-		const { handleSubmit, submitting, submitSucceeded, isError, errors } = this.props;
+		const { handleSubmit, submitting, isError, errors, pristine } = this.props;
 		return (
 			<div>
-				{ submitting && <Loading/>}
 				<form onSubmit={handleSubmit(this.handleFormSignInAndValidate)}>
 					<div className="panel panel-body login-form">
 						<div className="text-center">
@@ -59,8 +58,8 @@ class SignInContainer extends Component {
 							</div>
 						</div>
 						<div className="form-group">
-							<button type="submit" className="btn bg-blue btn-block btn-xlg" disabled={submitting || submitSucceeded}>
-								{submitSucceeded ? <i className="icon-spinner2 spinner"/> : 'Se Connecter' }
+							<button type="submit" className="btn bg-blue btn-block btn-xlg" disabled={submitting || pristine}>
+								{submitting ? <i className="icon-spinner2 spinner"/> : 'Se connecter' }
 							</button>
 						</div>
 						<div className="content-divider text-muted form-group">
@@ -100,8 +99,8 @@ const mapStateToProps = (state) => ({
 SignInContainer.propTypes = {
 	handleSubmit: PropTypes.func.isRequired,
 	submitting: PropTypes.bool.isRequired,
+	pristine: PropTypes.bool,
 	SignIn: PropTypes.func.isRequired,
-	submitSucceeded: PropTypes.bool.isRequired,
 	isError: PropTypes.bool,
 	errors: PropTypes.string
 };
@@ -113,7 +112,8 @@ SignInContainer.defaultProps = {
 
 SignInContainer.defaultProps = {
 	isError: PropTypes.bool,
-	errors: PropTypes.string
+	errors: PropTypes.string,
+	pristine: PropTypes.bool
 };
 
 const reduxFormSignin = reduxForm({

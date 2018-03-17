@@ -65,7 +65,7 @@ export function SignIn(credentials) {
             AuthParams.setToken(res.data.token, true);
             dispatch(SignInUserSuccess(res.data));
             dispatch(getUserSucess(res.data));
-            history.push("/app/feed");
+            history.replace("/app/feed");
         } catch(error) {
             dispatch(SignInUserFailure(error.response.data));
             const token = AuthParams.getToken();

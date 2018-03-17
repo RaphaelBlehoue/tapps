@@ -7,7 +7,9 @@ import { SignInContainer, SignUpContainer } from '../Security';
 /** la redirection vers match.url correspont à une page de redirection par defaut si
  * aucune url ou path ne correspont
  */
-const SecurityContainerPages = ({ match }) => (
+const SecurityContainerPages = ({ match }) => {
+	console.log(match);
+	return (
 	<div>
 		<div className="page-container">
 			<div className="page-content">
@@ -21,13 +23,13 @@ const SecurityContainerPages = ({ match }) => (
 			</div>
 		</div>
 	</div>
-);
+)};
 
 
 SecurityContainerPages.propTypes = {
 	match: PropTypes.shape({
 		path: PropTypes.node
-	}).isRequired	
+	}).isRequired
 };
 
 export default SecurityContainerPages;

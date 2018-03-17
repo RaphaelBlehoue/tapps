@@ -17,9 +17,11 @@ import SlideSwipeableComponent from './CarouselAndSlides/SlideSwipeableComponent
 import SideBarComponent from './Sidebars/SideBarComponent';
 import SecondSideBarComponent from './Sidebars/SecondSideBarComponent';
 import Footer from './Footer';
+import LinkButton from './LinkButton';
 
 export {
 	Loading,
+	LinkButton,
 	CardBarNotificationWrapper,
 	CardBarNotificationContent,
 	CardNavBarContentGroupLgWrapper,

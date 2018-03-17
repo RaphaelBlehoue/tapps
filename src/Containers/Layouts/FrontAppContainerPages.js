@@ -12,11 +12,11 @@ import { userFeedContainer, ProfileContainer } from '../Apps'
 const FrontAppContainerPages = ({ match }) => (
 	<div>
 		<NavbarContainer />
-		<Switch>
-			<Route path={`${match.path}/profile}`} exact component={ProfileContainer}/>
-			<Route path={`${match.path}/feed`} exact component={userFeedContainer}/>
-			<Redirect to={`${match.url}`} />
-		</Switch>
+			<Switch>
+					<Route path={`${match.path}/profile}`} exact component={ProfileContainer}/>
+					<Route path={`${match.path}/feed`} exact component={userFeedContainer}/>
+					<Redirect to={`${match.url}`}/>
+			</Switch>
 		<Footer />
 	</div>
 );
